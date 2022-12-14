@@ -10,7 +10,6 @@ window:
     decorations: none
 
 font:
-    # size: 15.0 # for old monitor
     size: 14.0
 
     normal:
