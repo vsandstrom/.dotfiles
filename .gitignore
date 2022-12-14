@@ -1,5 +1,7 @@
 karabiner/*
 !karabiner/karabiner.json
 nvim/spell/
+.DS_Store
+*/.DS_Store
 
 
