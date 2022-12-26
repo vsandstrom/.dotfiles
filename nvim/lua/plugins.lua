@@ -15,8 +15,11 @@ return require('packer').startup(function(use)
   --   'williamboman/mason.nvim',
   --   'williamboman/mason-lspconfig.nvim'
   -- }
+
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
   use 'neovim/nvim-lspconfig'
-  use 'williamboman/nvim-lsp-installer'
+  use 'jose-elias-alvarez/null-ls.nvim'
 
   use 'kylechui/nvim-surround'
 
@@ -42,8 +45,6 @@ return require('packer').startup(function(use)
 
   -- Old multi-cursor plugin
   use 'mg979/vim-visual-multi'
-
-  use 'kyazdani42/nvim-web-devicons'  -- not strictly required, but recommended
 
   -- NerdTree replacement
   -- use 'kyazdani42/nvim-tree.lua'
@@ -140,6 +141,16 @@ use {
   use "Pocco81/HighStr.nvim"
 
   -- use 'lewis6991/hover.nvim'
+  use { 'ibhagwan/fzf-lua',
+
+  -- java-lsp
+  use 'mfussenegger/nvim-jdtls',
+
+    -- optional for icon support
+  use 'nvim-tree/nvim-web-devicons'
+  }
+
+
 
 
 end)

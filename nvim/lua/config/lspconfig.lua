@@ -36,8 +36,8 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 
-  'pyright', 'tsserver', 'ccls', 'sumneko_lua', 'bashls', 'ltex', 'volar', 'html', 'cssls', 'gopls'
+local servers = {
+  'pyright', 'tsserver', 'clangd', 'sumneko_lua', 'bashls', 'ltex', 'volar', 'html', 'cssls', 'gopls', 'omnisharp'
 }
 for _, lsp in pairs(servers) do
   -- Lua LSP needed a bit coaxing
@@ -51,7 +51,7 @@ for _, lsp in pairs(servers) do
               path = runtime_path,
           },
           diagnostics = {
-              globals = { 'vim' }
+            globals = { 'vim' },
           },
           workspace = {
               library = vim.api.nvim_get_runtime_file("", true),
@@ -62,18 +62,22 @@ for _, lsp in pairs(servers) do
         }
       }
     }
-  elseif lsp == 'gopls' then
-    require('lspconfig')[lsp].setup {
-      on_attach = on_attach,
-      cmd = { 'gopls', '--remote=auto' },
-    }
-  end
-
-    -- default the other lsp services
+  elseif lsp == "omnisharp" then
+    local pid = vim.fn.getpid()
+    local omnisharp_bin = "/Users/viktorsandstrom/Downloads/omnisharp-osx-x64-net6.0/OmniSharp"
+    require('lspconfig')[lsp].setup{
+      cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) },
+      omnisharp = {
+        useModernNet = false,
+        monoPath = "/usr/bin/mono"
+    }}
+  else
+  -- default the other lsp services
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
-  }
 
+  }
+  end
 end
 
 -- local function setup_lsp_diags()
