@@ -9,7 +9,7 @@ return require('packer').startup(function(use)
   use 'rebelot/kanagawa.nvim'
 
   -- Replacement for default filetype.vim
-  use("nathom/filetype.nvim")
+  use "nathom/filetype.nvim"
 
   -- use {
   --   'williamboman/mason.nvim',
