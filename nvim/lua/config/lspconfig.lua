@@ -71,6 +71,18 @@ for _, lsp in pairs(servers) do
         useModernNet = false,
         monoPath = "/usr/bin/mono"
     }}
+  elseif lsp == "cssls" then 
+    require('lspconfig')[lsp].setup{
+      capabilities = {
+        textDocument = {
+          completion = {
+            completionItem = {
+              snippetSupport = true
+            }
+          }
+        }
+      }
+    }
   else
   -- default the other lsp services
   require('lspconfig')[lsp].setup {

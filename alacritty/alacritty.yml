@@ -8,6 +8,7 @@ window:
     dynamic_padding: true
     opacity: 0.77
     decorations: none
+    startup_mode: Maximized
 
 font:
     size: 14.0
