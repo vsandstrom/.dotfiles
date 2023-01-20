@@ -11,6 +11,7 @@ local opts = {
     end,
   },
   tools = { -- rust-tools options
+    autoSetHints = true,
 
     -- how to execute terminal commands
     -- options right now: termopen / quickfix
