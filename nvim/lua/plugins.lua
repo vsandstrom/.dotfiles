@@ -149,6 +149,12 @@ use {
     -- optional for icon support
   use 'nvim-tree/nvim-web-devicons'
   }
+  
+  use {
+    'phaazon/mind.nvim',
+    branch = 'v2.2',
+    require = {'nvim-lua/plenary.nvim'},
+  }
 
 
 
