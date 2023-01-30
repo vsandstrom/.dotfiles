@@ -25,18 +25,21 @@ alias cs="$HOME/Documents/C#/"
 alias gl="$HOME/Documents/Go/"
 alias rust="$HOME/Documents/rust/"
 
-
-if "$(uname -s)" == "Darwin"
-then 
-    # Alias to compilers
-    alias gcc="gcc-12"
-    alias g++="g++-12"
-    alias pdf="$HOME/Documents/PDF/Library"
-    # Clearing attribute from com.apple.quarantine - allowing for all vst/au components to be opened
-    alias validatePlugins="sudo xattr -rd com.apple.quarantine /Library/Audio/Plug-Ins"
-    # Fixing the mfucking camera when it bugs out
-    alias fixCam="sudo killall VCDAssistant"
-fi
+os="$(uname -s)"
+case "${os}" in
+    Linux*) echo "Linux";;
+    Darwin*) 
+        echo "MacOS"
+        # Alias to compilers
+        alias gcc="gcc-12"
+        alias g++="g++-12"
+        alias pdf="$HOME/Documents/PDF/Library"
+        # Clearing attribute from com.apple.quarantine - allowing for all vst/au components to be opened
+        alias validatePlugins="sudo xattr -rd com.apple.quarantine /Library/Audio/Plug-Ins"
+        # Fixing the mfucking camera when it bugs out
+        alias fixCam="sudo killall VCDAssistant";;
+    *)  echo "unknown OS"
+esac
 
 alias recent="-tr | tail -10 -r"
 
