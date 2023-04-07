@@ -9,7 +9,7 @@ require('mason-lspconfig').setup{
     "omnisharp",
     "tsserver",
     "pyright",
-    "sumneko_lua",
+    "lua_ls",
     "clangd",
     "bashls",
     "arduino_language_server"

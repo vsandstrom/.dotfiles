@@ -1,8 +1,4 @@
-local setlocal = vim.opt_local
 local map = require'utils'.map
-
-setlocal.tabstop = 4
-setlocal.shiftwidth = 4
 
 ----- CPPMAN -----
 map("n", "<leader>cm", function ()

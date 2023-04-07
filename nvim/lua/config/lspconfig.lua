@@ -37,7 +37,7 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = {
-  'pyright', 'tsserver', 'clangd', 'sumneko_lua', 'bashls', 'ltex', 'volar', 'html', 'cssls', 'gopls', 'omnisharp'
+  'pyright', 'tsserver', 'clangd', 'lua_ls', 'bashls', 'ltex', 'volar', 'html', 'cssls', 'gopls', 'omnisharp'
 }
 for _, lsp in pairs(servers) do
   -- Lua LSP needed a bit coaxing

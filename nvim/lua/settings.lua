@@ -18,9 +18,9 @@ set.relativenumber = true
 set.clipboard = 'unnamedplus'
 set.updatetime = 50
 
-set.tabstop = 4
-set.softtabstop = 4
-set.shiftwidth = 4
+set.tabstop = 2
+set.softtabstop = 2
+set.shiftwidth = 2
 set.syntax = 'enabled'
 set.autoindent = true
 set.foldmethod = 'indent'

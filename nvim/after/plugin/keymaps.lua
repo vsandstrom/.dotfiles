@@ -10,6 +10,10 @@ map("n", "<C-o>", ":NeoTreeShowToggle<CR>", {desc = "Toggles NeoTree, legacy NER
 ----- SUPERCOLLIDER -----
 map("n", "<C-k>", ":Telescope scdoc<CR>", {desc = "Telescope-scdoc search, similar as 'K'"})
 
+----- SUPERCOLLIDER -----
+map("n", "<C-t>", ":Telescope fd<CR>", {desc = "Telescope preview in PWD"})
+
+
 -- set custom paragraph jumping in normal and visual mode
 map({"n", "v"}, "U", "{", {desc = "Använder 'U' för 'upp', hoppar upp i paragrafer"})
 map({"n", "v"}, "N", "}", {desc = "Använder 'N' för 'ner', hoppar ner i paragrafer"})
