@@ -8,10 +8,10 @@ require('mason-lspconfig').setup{
     "gopls",
     "omnisharp",
     "tsserver",
-    "pyright",
+    "pylsp",
     "lua_ls",
     "clangd",
     "bashls",
-    "arduino_language_server"
+    "arduino_language_server" 
   }
 }

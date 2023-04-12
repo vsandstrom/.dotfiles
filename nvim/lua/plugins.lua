@@ -116,6 +116,12 @@ return require('packer').startup(function(use)
       'quangnguyen30192/cmp-nvim-tags',
     }
   }
+  use({
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    config = function()
+      require("lsp_lines").setup()
+    end,
+  })
 
   use 'folke/which-key.nvim'
 

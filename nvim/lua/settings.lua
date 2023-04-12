@@ -3,13 +3,18 @@ local vim = vim
 local set = vim.opt
 local map = require'utils'.map
 
-
 ---- SETTINGS ----
 map('', '<space>', '<nop>', {noremap = true, silent = true})
 vim.g.mapleader = " "
 vim.g.did_load_filetypes = 1
 
 vim.g.transparent_enabled = true
+
+-- vim.diagnostic.config({
+--   virtual_text = true,
+-- })
+
+-- vim.diagnostic.disable()
 
 set.nu = true
 set.relativenumber = true
