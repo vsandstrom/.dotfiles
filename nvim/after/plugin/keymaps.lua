@@ -39,3 +39,8 @@ end, {desc = "Toggles cursor follow on / off"})
 map("n", "<C-l>", function()
     return lines()
 end, {desc = "Toggles line numbers on / off"})
+
+map({"n"}, "<C-h>", "<CMD>TmuxNavigateLeft<CR>", {desc = "window left"})
+map({"n"}, "<C-l>", "<CMD>TmuxNavigateRight<CR>", {desc = "window right"})
+map({"n"}, "<C-j>", "<CMD>TmuxNavigateDown<CR>", {desc = "window down"})
+map({"n"}, "<C-k>", "<CMD>TmuxNavigateUp<CR>", {desc = "window up"})

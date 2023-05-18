@@ -41,7 +41,7 @@ local servers = {
 }
 for _, lsp in pairs(servers) do
   -- Lua LSP needed a bit coaxing
-  if lsp == "sumneko_lua" then
+  if lsp == "lua-ls" then
     require('lspconfig')[lsp].setup {
       on_attach = on_attach,
       settings = {
@@ -83,8 +83,21 @@ for _, lsp in pairs(servers) do
         }
       }
     }
-  else
+  elseif lsp == "ltex" then
+    require('lspconfig')[lsp].setup{
+      filetypes = {'markdown', 'md', 'tex'},
+      settings = {
+        ltex = {
+          language = {"en-US", "sv-SV"},
+          additionalRules = {
+            motherTongue = "sv-SV",
+          }
+        }
+      },
+      on_attach = on_attach,
+    }
   -- default the other lsp services
+  else
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
 

@@ -11,15 +11,19 @@ return require('packer').startup(function(use)
   -- Replacement for default filetype.vim
   use "nathom/filetype.nvim"
 
-  -- use {
-  --   'williamboman/mason.nvim',
-  --   'williamboman/mason-lspconfig.nvim'
-  -- }
+  use {'goolord/alpha-nvim',
+    requires = { 'nvim-tree/nvim-web-devicons' },
+  }
+  
+  -- lua lsp and types
+  use 'folke/neodev.nvim'
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
 
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
   use 'neovim/nvim-lspconfig'
   use 'jose-elias-alvarez/null-ls.nvim'
+
 
   use 'kylechui/nvim-surround'
 
@@ -35,6 +39,26 @@ return require('packer').startup(function(use)
 
   -- Latex compiler, auto-updates 'zathura' reader
   use 'lervag/vimtex'
+
+  -- use {
+  --   "iamcco/markdown-preview.nvim", 
+  --   run = function () vim.fn["mkdp#util#install"]()
+  --   end
+  -- }
+
+-- install without yarn or npm
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  })
+
+  -- use({ "iamcco/markdown-preview.nvim",
+  --   run = "cd app && npm install",
+  --   setup = function()
+  --     vim.g.mkdp_filetypes = { "markdown" }
+  --   end,
+  --   ft = { "markdown" },
+  -- })
 
   -- Edit shared files as in google drive
   use 'jbyuki/instant.nvim'
@@ -116,12 +140,6 @@ return require('packer').startup(function(use)
       'quangnguyen30192/cmp-nvim-tags',
     }
   }
-  use({
-    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    config = function()
-      require("lsp_lines").setup()
-    end,
-  })
 
   use 'folke/which-key.nvim'
 
@@ -163,7 +181,8 @@ return require('packer').startup(function(use)
     require = {'nvim-lua/plenary.nvim'},
   }
 
-
-
+  use {
+    'christoomey/vim-tmux-navigator'
+  }
 
 end)

@@ -36,7 +36,7 @@ set.incsearch = true
 set.termguicolors = false
 set.hlsearch = true
 set.wrap = true
-set.textwidth = 110
+set.textwidth = 100
 
 set.smartindent = true
 
