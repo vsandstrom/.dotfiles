@@ -1,6 +1,5 @@
 karabiner/*
 nvim/plugin/packer_compiled.lua
-tmux/plugins/*
 !karabiner/karabiner.json
 nvim/spell/
 .DS_Store
