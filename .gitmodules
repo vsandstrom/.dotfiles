@@ -10,3 +10,6 @@
 [submoduel "tmux/tmux/plugins/tmux"]
   path = tmux/plugins/tmux
   url = https://github.com/catppuccin/tmux
+[submodule "plugins/tmux"]
+	path = plugins/tmux
+	url = https://github.com/catppuccin/tmux
