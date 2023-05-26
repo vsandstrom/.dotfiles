@@ -53,3 +53,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+-- set highlight group for inline hints
+vim.cmd("hi LspInlayHint guifg=#a5a5a1 guibg=#3e3e3e")

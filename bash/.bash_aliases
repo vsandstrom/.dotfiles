@@ -40,12 +40,15 @@ case "${os}" in
             alias cs="$HOME/Documents/C#/"
             alias gl="$HOME/Documents/Go/"
             alias rust="$HOME/Documents/rust/"
+            alias risc="$HOME/Documents/riscv/"
             alias ino="$HOME/Documents/Arduino/"
             alias sc="$HOME/Documents/DAW/SC/"
         # Other aliases
           alias ssh='TERM=xterm-256color ssh'
           alias pdf="$HOME/Documents/PDF/Library"
           alias cv="$HOME/Documents/CV"
+        # RISC-V compiler 
+          alias riscc=". $HOME/Documents/riscv/esp-idf/export.sh"
         # Clearing attribute from com.apple.quarantine - allowing for all vst/au components to be opened
         alias validatePlugins="sudo xattr -rd com.apple.quarantine /Library/Audio/Plug-Ins"
         # Fixing the mfucking camera when it bugs out

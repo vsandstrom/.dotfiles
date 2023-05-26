@@ -23,6 +23,7 @@ return require('packer').startup(function(use)
   use 'williamboman/mason-lspconfig.nvim'
   use 'neovim/nvim-lspconfig'
   use 'jose-elias-alvarez/null-ls.nvim'
+  use {'lvimuser/lsp-inlayhints.nvim', branch = "anticonceal"}
 
 
   use 'kylechui/nvim-surround'

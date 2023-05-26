@@ -1,11 +1,10 @@
 require('filetype').setup({
-    overrides = {
-        extensions = {
-            scd = 'supercollider',
-            sc = 'supercollider',
-            tex = 'tex',
-            c = 'c',
-            h = 'h'
-        }
-    }
+  overrides = {
+    c = 'c',
+    h = 'c',
+    sc = 'supercollider',
+    scd = 'supercollider',
+    hpp = 'cpp',
+    cpp = 'cpp'
+  }
 })
