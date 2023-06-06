@@ -8,8 +8,6 @@ return require('packer').startup(function(use)
   use 'ellisonleao/gruvbox.nvim'
   use 'rebelot/kanagawa.nvim'
 
-  -- Replacement for default filetype.vim
-  use "nathom/filetype.nvim"
 
   use {'goolord/alpha-nvim',
     requires = { 'nvim-tree/nvim-web-devicons' },
@@ -41,25 +39,11 @@ return require('packer').startup(function(use)
   -- Latex compiler, auto-updates 'zathura' reader
   use 'lervag/vimtex'
 
-  -- use {
-  --   "iamcco/markdown-preview.nvim", 
-  --   run = function () vim.fn["mkdp#util#install"]()
-  --   end
-  -- }
-
 -- install without yarn or npm
   use({
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
   })
-
-  -- use({ "iamcco/markdown-preview.nvim",
-  --   run = "cd app && npm install",
-  --   setup = function()
-  --     vim.g.mkdp_filetypes = { "markdown" }
-  --   end,
-  --   ft = { "markdown" },
-  -- })
 
   -- Edit shared files as in google drive
   use 'jbyuki/instant.nvim'
@@ -93,16 +77,13 @@ return require('packer').startup(function(use)
   -- Clean python folding. z+c & z+a
   use 'tmhedberg/SimpylFold'
 
-  -- multi-plugin with surround, comment etc
-  -- use 'echasnovski/mini.nvim'
-
   use 'numToStr/Comment.nvim'
 
   -- Telescope
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
   -- or                            , branch = '0.1.x',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = {{'nvim-lua/plenary.nvim'}}
   }
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
@@ -149,8 +130,6 @@ return require('packer').startup(function(use)
       { 'MunifTanjim/nui.nvim' }
   }}
 
-
--- INSERT MADS Faust and h4x stuff
   use 'xiyaowong/nvim-transparent'
 
   -- GoLang pretty stuff
@@ -186,4 +165,6 @@ return require('packer').startup(function(use)
     'christoomey/vim-tmux-navigator'
   }
 
+  -- Replacement for default filetype.vim
+  use "nathom/filetype.nvim"
 end)
