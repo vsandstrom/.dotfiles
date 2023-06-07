@@ -4,8 +4,8 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
   -- Lua implementation of gruvbox (look into other variants
-  use 'morhetz/gruvbox'
-  use 'ellisonleao/gruvbox.nvim'
+  -- use 'morhetz/gruvbox'
+  -- use 'ellisonleao/gruvbox.nvim'
   use 'rebelot/kanagawa.nvim'
 
 
@@ -89,6 +89,7 @@ return require('packer').startup(function(use)
 
   use 'davidgranstrom/scnvim'
   use 'davidgranstrom/telescope-scdoc.nvim'
+  use 'davidgranstrom/oblique-strategies.nvim'
 
   -- TODO: setup correctly
   use { 'madskjeldgaard/supercollider-h4x-nvim',
@@ -164,6 +165,8 @@ return require('packer').startup(function(use)
   use {
     'christoomey/vim-tmux-navigator'
   }
+
+
 
   -- Replacement for default filetype.vim
   use "nathom/filetype.nvim"
