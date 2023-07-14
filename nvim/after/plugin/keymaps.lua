@@ -31,6 +31,9 @@ map("t", "<esc>", "<C-\\><C-n>", {desc = "<ESC> works in terminal mode as in nor
 map('n', '<leader>t', '<CMD>lua require("FTerm").toggle()<CR>')
 map('t', '<leader>t', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 
+-- Packer sync:
+map('n', '<leader>ps', '<CMD>PackerSync<CR>')
+
 ----- CUSTOM -----
 map("n", "<C-f>", function()
     return cursor()

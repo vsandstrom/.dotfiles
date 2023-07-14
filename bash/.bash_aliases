@@ -30,6 +30,8 @@ case "${os}" in
         # Alias to compilers
         alias gcc="gcc-12"
         alias g++="g++-12"
+        alias python="python3.11"
+        alias python3="python3.11"
         # Shortcuts to programming stuff
             alias c="$HOME/Documents/C/"
             alias cpp="$HOME/Documents/Cpp/"
@@ -43,6 +45,7 @@ case "${os}" in
             alias risc="$HOME/Documents/riscv/"
             alias ino="$HOME/Documents/Arduino/"
             alias sc="$HOME/Documents/DAW/SC/"
+            alias dsp="$HOME/Documents/Cpp/dsp/"
         # Other aliases
           alias ssh='TERM=xterm-256color ssh'
           alias pdf="$HOME/Documents/PDF/Library"

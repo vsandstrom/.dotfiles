@@ -1,4 +1,4 @@
-vim.cmd [[packadd packer.nvim]]
+vim.cmd[[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
   -- Packer can manage itself
@@ -11,6 +11,12 @@ return require('packer').startup(function(use)
 
   use {'goolord/alpha-nvim',
     requires = { 'nvim-tree/nvim-web-devicons' },
+  }
+
+  use {'levouh/tint.nvim',
+    config = function()
+      require('tint').setup()
+    end
   }
   
   -- lua lsp and types

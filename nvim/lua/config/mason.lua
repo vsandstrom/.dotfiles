@@ -12,6 +12,8 @@ require('mason-lspconfig').setup{
     "lua_ls",
     "clangd",
     "bashls",
-    "arduino_language_server" 
+    "arduino_language_server",
+    "svelte"
+
   }
 }

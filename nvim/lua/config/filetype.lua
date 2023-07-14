@@ -1,10 +1,19 @@
 require('filetype').setup({
   overrides = {
-    c = 'c',
-    h = 'c',
-    sc = 'supercollider',
-    scd = 'supercollider',
-    hpp = 'cpp',
-    cpp = 'cpp'
+    extensions = {
+      c = 'c',
+      h = 'c',
+      sc = 'supercollider',
+      scd = 'supercollider',
+      hpp = 'cpp',
+      cpp = 'cpp',
+      rs = 'rust',
+      sh = 'sh'
+    },
+    complex = {
+      [".bash*"] = "bash",
+      [".zsh*"] = "zsh",
+      [".gitignore"] = "gitignore",
+    }
   }
 })
