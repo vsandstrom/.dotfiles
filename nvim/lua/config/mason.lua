@@ -14,6 +14,7 @@ require('mason-lspconfig').setup{
     "bashls",
     "arduino_language_server",
     "svelte"
-
-  }
+    -- "rust_analyzer"
+  },
+  automatic_installation = true
 }

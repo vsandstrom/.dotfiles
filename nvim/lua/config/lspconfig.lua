@@ -37,7 +37,8 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = {
-  'pyright', 'tsserver', 'clangd', 'lua_ls', 'bashls', 'ltex', 'volar', 'html', 'cssls', 'gopls', 'omnisharp', 'svelte'
+  'pyright', 'tsserver', 'clangd', 'lua_ls', 'bashls', 'ltex', 'volar', 'html', 'cssls', 'gopls', 'omnisharp', 'svelte', 
+  'rust_analyzer'
 }
 for _, lsp in pairs(servers) do
   -- Lua LSP needed a bit coaxing
@@ -96,6 +97,20 @@ for _, lsp in pairs(servers) do
       },
       on_attach = on_attach,
     }
+  -- elseif lsp == "rust-analyzer" then
+  --   require('lspconfig')[lsp].setup{
+  --     settings = {
+  --       ["rust-analyzer"] = {
+  --         diagnostics = {
+  --             enable = true,
+  --             disabled = {"unresolved-proc-macro"},
+  --             -- enableExperimental = true,
+  --         }
+  --       }
+  --     },
+  --     on_attach = on_attach,
+  --     filetypes = {'rust'},
+  --   }
   -- default the other lsp services
   else
   require('lspconfig')[lsp].setup {

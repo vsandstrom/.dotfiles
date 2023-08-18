@@ -1,4 +1,6 @@
-require('lsp-inlayhints').setup()
+require('lsp-inlayhints').setup({
+  priority = 8
+})
 
 vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
 vim.api.nvim_create_autocmd("LspAttach", {
