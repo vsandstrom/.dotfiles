@@ -37,6 +37,7 @@ set.termguicolors = false
 set.hlsearch = true
 set.wrap = true
 set.textwidth = 100
+set.signcolumn="yes:1"
 
 set.smartindent = true
 

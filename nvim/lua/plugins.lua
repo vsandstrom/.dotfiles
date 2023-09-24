@@ -30,6 +30,14 @@ return require('packer').startup(function(use)
   use 'jose-elias-alvarez/null-ls.nvim'
   use {'lvimuser/lsp-inlayhints.nvim', branch = "anticonceal"}
 
+  use { 
+    'nvimdev/lspsaga.nvim',
+    after = 'nvim-lspconfig',
+    config = function()
+      require('lspsaga').setup()
+    end
+  }
+
   use {'nvim-treesitter/nvim-treesitter',
     requires = {
       'JoosepAlviste/nvim-ts-context-commentstring',
@@ -154,14 +162,13 @@ return require('packer').startup(function(use)
   use "Pocco81/HighStr.nvim"
 
   -- use 'lewis6991/hover.nvim'
-  use { 'ibhagwan/fzf-lua',
+  use 'ibhagwan/fzf-lua'
 
   -- java-lsp
-  use 'mfussenegger/nvim-jdtls',
+  use 'mfussenegger/nvim-jdtls'
 
     -- optional for icon support
   use 'nvim-tree/nvim-web-devicons'
-  }
 
   -- use {
   --   'phaazon/mind.nvim',

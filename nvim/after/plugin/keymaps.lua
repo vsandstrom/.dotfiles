@@ -47,3 +47,7 @@ map({"n"}, "<C-h>", "<CMD>TmuxNavigateLeft<CR>", {desc = "window left"})
 map({"n"}, "<C-l>", "<CMD>TmuxNavigateRight<CR>", {desc = "window right"})
 map({"n"}, "<C-j>", "<CMD>TmuxNavigateDown<CR>", {desc = "window down"})
 map({"n"}, "<C-k>", "<CMD>TmuxNavigateUp<CR>", {desc = "window up"})
+
+map({"n"}, "gd", "<CMD>Lspsaga goto_definition<CR>", {desc = "go to definition"})
+map({"n"}, "gD", "<CMD>Lspsaga peek_definition<CR>", {desc = "peek definition"})
+map({"n"}, "<leader>c", "<CMD>Lspsaga code_action<CR>", {desc = "code actions available"})

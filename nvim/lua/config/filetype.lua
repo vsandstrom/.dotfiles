@@ -8,7 +8,10 @@ require('filetype').setup({
       hpp = 'cpp',
       cpp = 'cpp',
       rs = 'rust',
-      sh = 'sh'
+      sh = 'sh',
+      tex = 'tex',
+      lua = 'lua',
+
     },
     complex = {
       [".bash*"] = "bash",
