@@ -17,6 +17,9 @@ scnvim.setup {
     ['<leader>sk'] = map('sclang.recompile'),
     ['<F1>'] = map_expr('s.boot'),
     ['<F2>'] = map_expr('s.meter'),
+    ['<F3>'] = scnvim.map(function ()
+      require'telescope'.extensions.supercollider.sc_definitions()
+    end, {'n', 'x', 'i'})
   },
   editor = {
     highlight = {

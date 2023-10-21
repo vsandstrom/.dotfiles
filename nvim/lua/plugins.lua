@@ -114,7 +114,7 @@ return require('packer').startup(function(use)
     requires = {{'nvim-lua/plenary.nvim'}}
   }
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-
+  use { 'madskjeldgaard/telescope-supercollider.nvim',  }
   use 'davidgranstrom/scnvim'
   use 'davidgranstrom/telescope-scdoc.nvim'
   use 'davidgranstrom/oblique-strategies.nvim'
@@ -182,4 +182,6 @@ return require('packer').startup(function(use)
 
   -- Replacement for default filetype.vim
   use "nathom/filetype.nvim"
+
+  use { 'davidgranstrom/replay.nvim' }
 end)

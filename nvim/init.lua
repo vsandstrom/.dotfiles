@@ -31,4 +31,5 @@ require('config.golang')
 -- require('config.mind')
 require('config.mdpreview')
 require('config.filetype')
+require('config.sctelescope')
 
