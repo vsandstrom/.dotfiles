@@ -35,9 +35,14 @@ map('t', '<leader>t', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 map('n', '<leader>ps', '<CMD>PackerSync<CR>')
 
 ----- CUSTOM -----
+
+map("n", "cc", "<ESC>:%substitute:::g<LEFT><LEFT><LEFT>", {desc = "Change all occurences of something"})
+
 map("n", "<C-f>", function()
     return cursor()
 end, {desc = "Toggles cursor follow on / off"})
+
+
 
 map("n", "<C-l>", function()
     return lines()
