@@ -36,7 +36,7 @@ map('n', '<leader>ps', '<CMD>PackerSync<CR>')
 
 ----- CUSTOM -----
 
-map("n", "cc", "<ESC>:%substitute:::g<LEFT><LEFT><LEFT>", {desc = "Change all occurences of something"})
+map("n", "cc", "<ESC>:%substitute:<C-r><C-w>::g<LEFT><LEFT>", {desc = "Substitute all occurences of word under cursor"})
 
 map("n", "<C-f>", function()
     return cursor()
