@@ -1,35 +1,19 @@
-require('plugins')
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
 require('settings')
---require('keymap')
---require('color')
+require("lazy").setup("plugins")
 
 ---- PLUGIN CONFIG ----
-require('config.rust-tools')
-require('config.mason')
-require('config.lspconfig')
-require('config.null_ls')
-require('config.alpha-nvim')
-require('config.lualine')
-require('config.vimtex')
-require('config.snippets')
-require('config.luasnips')
-require('config.supercollider')
-require('config.oblique')
-require('config.telescope')
-require('config.treesitter')
-require('config.cmp-nvim-lsp')
-require('config.neotree')
-require('config.which-key')
-require('config.cppman')
-require('config.high-str')
-require('config.comment')
-require('config.surround')
-require('config.golang')
-require('config.mdpreview')
-require('config.filetype')
-require('config.sctelescope')
-
--- require('config.lsp_inlayhints')
+-- require('config.high-str')
 -- require('config.instant')
--- require('config.fterm')
--- require('config.mind')

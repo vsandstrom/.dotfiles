@@ -5,4 +5,4 @@
 --     vim.cmd(':color gruvbox')
 -- end
 
-vim.cmd(':colorscheme kanagawa')
+-- vim.cmd(':colorscheme kanagawa')

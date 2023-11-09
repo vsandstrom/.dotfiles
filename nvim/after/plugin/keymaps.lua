@@ -6,10 +6,9 @@ local cursor = require('utils').cursorFollow
 local lines = require('utils').lineNumbers
 
 ----- NEOTREE -----
-map("n", "<C-o>", ":NeoTreeShowToggle<CR>", {desc = "Toggles NeoTree, legacy NERDTree key binding"})
+map("n", "<C-o>", ":Neotree toggle<CR>", {desc = "Toggles NeoTree, legacy NERDTree key binding"})
 ----- SUPERCOLLIDER -----
 map("n", "<C-k>", ":Telescope scdoc<CR>", {desc = "Telescope-scdoc search, similar as 'K'"})
-
 ----- SUPERCOLLIDER -----
 map("n", "<C-t>", ":Telescope fd<CR>", {desc = "Telescope preview in PWD"})
 
@@ -27,12 +26,8 @@ map({'n', 'v'}, '<leader><S><leader>', '<cmd>:bprevious<CR>', {silent = true, de
 
 map("t", "<esc>", "<C-\\><C-n>", {desc = "<ESC> works in terminal mode as in normal mode"})
 
--- FTerm mappings:
-map('n', '<leader>t', '<CMD>lua require("FTerm").toggle()<CR>')
-map('t', '<leader>t', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
-
 -- Packer sync:
-map('n', '<leader>ps', '<CMD>PackerSync<CR>')
+map('n', '<leader>l', '<CMD>Lazy sync<CR>')
 
 ----- CUSTOM -----
 
@@ -41,8 +36,6 @@ map("n", "cc", "<ESC>:%substitute:<C-r><C-w>::g<LEFT><LEFT>", {desc = "Substitut
 map("n", "<C-f>", function()
     return cursor()
 end, {desc = "Toggles cursor follow on / off"})
-
-
 
 map("n", "<C-l>", function()
     return lines()

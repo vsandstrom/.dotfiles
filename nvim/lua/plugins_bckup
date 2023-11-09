@@ -1,0 +1,56 @@
+
+-- install without yarn or npm
+
+  -- Edit shared files as in google drive
+  -- use 'jbyuki/instant.nvim'
+
+
+  -- use {
+  --   "folke/trouble.nvim",
+  -- }
+
+
+
+  -- Telescope
+
+  -- TODO: setup correctly
+  -- use { 'madskjeldgaard/supercollider-h4x-nvim',
+  --   config = function ()
+  --     require'supercollider-h4x'.setup()
+  --   end,
+  --   after = {'scnvim'},
+  --   requires = {
+  --     'davidgranstrom/scnvim'
+  --   }
+  -- }
+
+  -- Arduino vim-IDE
+  -- use 'stevearc/vim-arduino'
+
+
+
+
+
+  -- GoLang pretty stuff
+
+
+  -- Floating Terminal-buffer
+  -- use 'numToStr/FTerm.nvim'
+
+  -- Highlight some text when taking notes
+  -- use "Pocco81/HighStr.nvim"
+
+  -- use 'lewis6991/hover.nvim'
+  use 'ibhagwan/fzf-lua'
+
+  -- java-lsp
+  use {'mfussenegger/nvim-jdtls', ft = {"java"}}
+
+  -- use { 'davidgranstrom/replay.nvim' }
+
+
+
+
+
+
+  },

@@ -9,4 +9,5 @@ require('telescope').setup({
   }
 })
 require('telescope').load_extension('scdoc')
-require('telescope').load_extension('fzf')
+require('telescope').load_extension('supercollider')
+-- require('telescope').load_extension('fzfnative')

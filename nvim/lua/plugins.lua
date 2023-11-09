@@ -1,187 +1,158 @@
-vim.cmd[[packadd packer.nvim]]
-
-return require('packer').startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
-
-  -- colorscheme
-  use 'rebelot/kanagawa.nvim'
-  -- use 'nyngwang/nvimgelion'
-  -- use 'xero/miasma.nvim'
-
-  -- startup screen
-  use {'goolord/alpha-nvim',
-    requires = { 'nvim-tree/nvim-web-devicons' },
-  }
-
-  -- silly plugin to show active split
-  use {'levouh/tint.nvim',
+return {
+  -- colorscheme --
+  { 'rebelot/kanagawa.nvim',
+    lazy = false,
+    priority = 1000,
     config = function()
-      require('tint').setup()
-    end
-  }
-  
-  -- lua lsp and types
-  use 'folke/neodev.nvim'
-  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
-  use 'williamboman/mason.nvim'
-  use 'williamboman/mason-lspconfig.nvim'
-  use 'neovim/nvim-lspconfig'
-  use 'jose-elias-alvarez/null-ls.nvim'
-  use {'lvimuser/lsp-inlayhints.nvim', branch = "anticonceal"}
+      vim.cmd([[colorscheme kanagawa]])
+    end,
+  },
 
-  use { 
-    'nvimdev/lspsaga.nvim',
-    after = 'nvim-lspconfig',
-    config = function()
-      require('lspsaga').setup()
-    end
-  }
+  -- turns nvim transparent
+  { 'xiyaowong/nvim-transparent', lazy = false },
+  -- silly plugin to show active split --
+  { 'levouh/tint.nvim', config = function() require('config.tint') end, lazy = true},
+  -- key combo reminder
+  { 'folke/which-key.nvim', config = function() require('config.which-key') end, lazy = true},
+  -- devicons
+  -- {"kyazdani42/nvim-web-devicons", lazy = true},
+  -- {"nvim-lua/plenary.nvim", lazy = true},
+  -- {"MunifTanjim/nui.nvim", lazy = true},
 
-  use {'nvim-treesitter/nvim-treesitter',
-    requires = {
-      'JoosepAlviste/nvim-ts-context-commentstring',
-      'windwp/nvim-ts-autotag',
-      'nvim-treesitter/nvim-treesitter-textobjects'
-    },
-  }
-  
-  use 'L3MON4D3/LuaSnip'
+  { "nvim-neo-tree/neo-tree.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim", },
+    config = function() require('config.neotree') end
+  },
 
-  use {
-    'hrsh7th/nvim-cmp',
-    requires = {
+  -- startup screen --
+  {'goolord/alpha-nvim', lazy = false,
+    dependencies = { "kyazdani42/nvim-web-devicons" },
+    config = function() require('config.alpha-nvim') end
+  },
+
+  --- Treesitter expansions ---
+
+  {'windwp/nvim-ts-autotag',
+    ft = {"ts", "svelte", "react", "tsx"},
+    lazy = true,
+  },
+
+  {'jose-elias-alvarez/null-ls.nvim',
+    lazy = "VeryLazy",
+    ft = {"ts", "svelte", "tsx", "rust", "c", "cpp"},
+    config = function() require('config.null_ls') end
+  },
+
+   -- {'lvimr/lsp-inlayhints.nvim', branch = "anticonceal", 
+   --   config = function() 
+   --     require('config.lsp_inlayhints')
+   --   end
+   -- }
+
+  -- TREESITTER --
+  { 'nvim-treesitter/nvim-treesitter', config = function() require('config.treesitter') end },
+  { 'nvim-treesitter/nvim-treesitter-textobjects', lazy = true },
+  -- Replacement for default filetype.vim
+  { "nathom/filetype.nvim", lazy = false, config = function() require('config.filetype') end },
+  -- SEAMLESS NAVIGATION BETWEEN NVIM AND TMUX PANES
+  { 'christoomey/vim-tmux-navigator', lazy = false },
+  -- AUTOPAIR parenthesis etc.
+  'jiangmiao/auto-pairs',
+  -- Clean python folding. z+c & z+a
+  {'tmhedberg/SimpylFold', ft = {"py", "python"}, lazy = true },
+  --- Surround with parenthesis etc ---
+  { 'kylechui/nvim-surround', config = function() require('config.surround') end, },
+  --- Status bar
+  {'nvim-lualine/lualine.nvim', config = function() require('config.lualine') end, lazy = true},
+  -- Latex compiler, auto-updates 'zathura' reader
+  {'lervag/vimtex', ft = {"tex", "latex"}, config = function() require('config.vimtex') end },
+  --- COMMENTING EASIER ---
+  {'numToStr/Comment.nvim', lazy = false, config = function() require('config.comment') end },
+  {'JoosepAlviste/nvim-ts-context-commentstring',
+    ft = {"ts", "svelte", "react", "tsx"},
+    lazy = true,
+    dependencies = {
+      'numToStr/Comment.nvim'
+    }
+  },
+
+  --- DEBUGGING --- 
+  'folke/neodev.nvim',
+  { "mfussenegger/nvim-dap", lazy = true, dependencies = {"rcarriga/nvim-dap-ui"} },
+
+  --- LSP AND COMPLETIONS
+  { 'williamboman/mason.nvim', config = function() require('config.mason') end, lazy = true, cmd = "Mason"},
+  {'williamboman/mason-lspconfig.nvim', lazy = true},
+  { 'neovim/nvim-lspconfig', config = function() require('config.lspconfig') end, },
+  { 'L3MON4D3/LuaSnip', config = function() require('config.luasnips') end, lazy = true },
+
+  { 'hrsh7th/nvim-cmp',
+    event = "InsertEnter",
+    dependencies = {
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
       'quangnguyen30192/cmp-nvim-tags',
-    }
-  }
-
-  use 'kylechui/nvim-surround'
-
-  use 'nvim-lualine/lualine.nvim'
-
-  -- Latex compiler, auto-updates 'zathura' reader
-  use 'lervag/vimtex'
-
--- install without yarn or npm
-  use({
-    "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
-  })
-
-  -- Edit shared files as in google drive
-  -- use 'jbyuki/instant.nvim'
-
-  -- Snippet support
-  use 'norcalli/snippets.nvim'
-  use 'madskjeldgaard/lua-supercollider-snippets'
-
-  -- Old multi-cursor plugin
-  use 'mg979/vim-visual-multi'
-
-  -- NerdTree replacement
-  -- use 'kyazdani42/nvim-tree.lua'
-  use {
-    "nvim-neo-tree/neo-tree.nvim",
-      branch = "v2.x",
-      requires = {
-        "nvim-lua/plenary.nvim",
-        "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
-        "MunifTanjim/nui.nvim",
-      }
-    }
-
-  -- use {
-  --   "folke/trouble.nvim",
-  --   requires = "kyazdani42/nvim-web-devicons",
-  -- }
-
-  -- Old quick comment-out plugin, and auto-complete parenthesis, and surround
-  use 'jiangmiao/auto-pairs'
-  -- Clean python folding. z+c & z+a
-  use 'tmhedberg/SimpylFold'
-
-  use 'numToStr/Comment.nvim'
-
-  -- Telescope
-  use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
-  -- or                            , branch = '0.1.x',
-    requires = {{'nvim-lua/plenary.nvim'}}
-  }
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  use { 'madskjeldgaard/telescope-supercollider.nvim',  }
-  use 'davidgranstrom/scnvim'
-  use 'davidgranstrom/telescope-scdoc.nvim'
-  use 'davidgranstrom/oblique-strategies.nvim'
-
-  -- TODO: setup correctly
-  use { 'madskjeldgaard/supercollider-h4x-nvim',
-    config = function ()
-      require'supercollider-h4x'.setup()
+      'L3MON4D3/LuaSnip',
+    },
+    config = function()
+      require('config.cmp-nvim-lsp') -- ***
     end,
-    after = {'scnvim'},
-    requires = {
-      'davidgranstrom/scnvim'
-    }
-  }
-  -- Other faust things
-  -- faust syntax and filetype
-  use 'gmoe/vim-faust'
-
-  use 'madskjeldgaard/faust-nvim'
-
-  -- Arduino vim-IDE
-  use 'stevearc/vim-arduino'
-
-
-  use 'folke/which-key.nvim'
-
-  use {'madskjeldgaard/cppman.nvim',
-  requires = {
-      { 'MunifTanjim/nui.nvim' }
-  }}
-
-  use 'xiyaowong/nvim-transparent'
-
-  -- GoLang pretty stuff
-  use 'ray-x/go.nvim'
-  use 'ray-x/guihua.lua' -- recommanded if need floating window support
+  },
 
   -- Rust stuff
-  use 'simrat39/rust-tools.nvim'
+  {'simrat39/rust-tools.nvim', ft = {"rust", "rs"}, config = function() require('config.rust-tools') end },
+  -- Go stuff
+  {'ray-x/go.nvim', config = function() require('config.golang') end, dependencies = { 'ray-x/guihua.lua' }, ft = {"go", "golang"} },
 
-  -- Floating Terminal-buffer
-  -- use 'numToStr/FTerm.nvim'
+  --- CPP manual (requires network connection) ---
+  { 'madskjeldgaard/cppman.nvim', dependencies = {'MunifTanjim/nui.nvim'}, ft = {"cpp", "hpp"} },
+  --- TELESCOPE ---
+  { 'nvim-telescope/telescope.nvim', config = function () require('config.telescope') end,
+    dependencies = {'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-fzf-native.nvim'},
+    lazy = true,
+    cmd = "Telescope"
+  },
 
-  -- Highlight some text when taking notes
-  use "Pocco81/HighStr.nvim"
+  {'davidgranstrom/telescope-scdoc.nvim', lazy = true,
+    dependencies = {
+      'nvim-telescope/telescope.nvim',
+      'nvim-telescope/telescope-fzf-native.nvim',
+      'nvim-telescope/telescope.nvim',
+      'madskjeldgaard/telescope-supercollider.nvim',
+    }
+  },
 
-  -- use 'lewis6991/hover.nvim'
-  use 'ibhagwan/fzf-lua'
+  { 'davidgranstrom/scnvim', ft = {"scd", "supercollider"}, config = function() require('config.supercollider') end, 
+    dependencies = {
+      'madskjeldgaard/lua-supercollider-snippets',
+    }
+  },
 
-  -- java-lsp
-  use 'mfussenegger/nvim-jdtls'
+  -- Snippet support
+  {'norcalli/snippets.nvim', lazy = true},
 
-    -- optional for icon support
-  use 'nvim-tree/nvim-web-devicons'
+  { 'davidgranstrom/oblique-strategies.nvim', config = function() require('config.oblique') end },
+  
 
-  -- use {
-  --   'phaazon/mind.nvim',
-  --   branch = 'v2.2',
-  --   require = {'nvim-lua/plenary.nvim'},
-  -- }
+  { "iamcco/markdown-preview.nvim",
+    config = function() 
+      vim.fn["mkdp#util#install"]()
+      require('config.mdpreview')
+    end,
+    ft = {'md', 'markdown'}
+  },
 
-  use {
-    'christoomey/vim-tmux-navigator'
-  }
+  -- Other faust things
+  -- faust syntax and filetype
+  {'madskjeldgaard/faust-nvim',
+    lazy = true,
+    ft = {"dsp"},
+    dependencies = {
+      {'gmoe/vim-faust'}
+    }
+  },
+}
 
-  -- Replacement for default filetype.vim
-  use "nathom/filetype.nvim"
-
-  use { 'davidgranstrom/replay.nvim' }
-end)

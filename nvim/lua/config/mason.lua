@@ -5,7 +5,6 @@ require('mason-lspconfig').setup{
     "cssls",
     "html";
     "ltex",
-    "gopls",
     "omnisharp",
     "tsserver",
     "pylsp",
@@ -14,7 +13,9 @@ require('mason-lspconfig').setup{
     "bashls",
     "arduino_language_server",
     "svelte"
+    --- these are handled by their own plugins
     -- "rust_analyzer"
+    -- "gopls",
   },
   automatic_installation = true
 }

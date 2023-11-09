@@ -1,6 +1,7 @@
 local scnvim = require('scnvim')
 local map = scnvim.map
 local map_expr = scnvim.map_expr
+
 scnvim.setup {
   keymaps = {
       ['<C-e>'] = {
@@ -39,3 +40,7 @@ scnvim.setup {
   },
 }
 
+map(function()
+  require'scnvim.editor'.send_selection()
+  vim.cmd([[exe "normal! \<Esc>"]])
+end, 'x')

@@ -6,8 +6,8 @@ local map = require'utils'.map
 ---- SETTINGS ----
 map('', '<space>', '<nop>', {noremap = true, silent = true})
 vim.g.mapleader = " "
-vim.g.did_load_filetypes = 1
 
+vim.g.did_load_filetypes = 1
 vim.g.transparent_enabled = true
 
 -- vim.diagnostic.config({
@@ -19,9 +19,8 @@ vim.g.transparent_enabled = true
 set.nu = true
 set.relativenumber = true
 
-
 set.clipboard = 'unnamedplus'
-set.updatetime = 50
+-- set.updatetime = 50
 
 set.tabstop = 2
 set.softtabstop = 2
@@ -56,3 +55,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 -- set highlight group for inline hints
 vim.cmd("hi LspInlayHint guifg=#a5a5a1 guibg=#3e3e3e")
+
+vim.g.default_sequence_length = 4
+vim.g.supercollider_snippet_comma_newline = 1
