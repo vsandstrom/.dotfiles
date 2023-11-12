@@ -16,4 +16,3 @@ require("lazy").setup("plugins")
 
 ---- PLUGIN CONFIG ----
 -- require('config.high-str')
--- require('config.instant')

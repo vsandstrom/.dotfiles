@@ -8,16 +8,21 @@ return {
     end,
   },
 
+  { 'davidgranstrom/oblique-strategies.nvim', 
+    lazy = false,
+    priority = 999,
+    config = function()
+      require('config.oblique')
+    end,
+  },
+
+
   -- turns nvim transparent
-  { 'xiyaowong/nvim-transparent', lazy = false },
+  { 'xiyaowong/nvim-transparent', lazy = false},
   -- silly plugin to show active split --
   { 'levouh/tint.nvim', config = function() require('config.tint') end, lazy = true},
   -- key combo reminder
   { 'folke/which-key.nvim', config = function() require('config.which-key') end, lazy = true},
-  -- devicons
-  -- {"kyazdani42/nvim-web-devicons", lazy = true},
-  -- {"nvim-lua/plenary.nvim", lazy = true},
-  -- {"MunifTanjim/nui.nvim", lazy = true},
 
   { "nvim-neo-tree/neo-tree.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim", },
@@ -25,19 +30,19 @@ return {
   },
 
   -- startup screen --
-  {'goolord/alpha-nvim', lazy = false,
+  { 'goolord/alpha-nvim', lazy = false,
     dependencies = { "kyazdani42/nvim-web-devicons" },
     config = function() require('config.alpha-nvim') end
   },
 
   --- Treesitter expansions ---
 
-  {'windwp/nvim-ts-autotag',
+  { 'windwp/nvim-ts-autotag',
     ft = {"ts", "svelte", "react", "tsx"},
     lazy = true,
   },
 
-  {'jose-elias-alvarez/null-ls.nvim',
+  { 'jose-elias-alvarez/null-ls.nvim',
     lazy = "VeryLazy",
     ft = {"ts", "svelte", "tsx", "rust", "c", "cpp"},
     config = function() require('config.null_ls') end
@@ -55,35 +60,31 @@ return {
   -- Replacement for default filetype.vim
   { "nathom/filetype.nvim", lazy = false, config = function() require('config.filetype') end },
   -- SEAMLESS NAVIGATION BETWEEN NVIM AND TMUX PANES
-  { 'christoomey/vim-tmux-navigator', lazy = false },
+  { 'christoomey/vim-tmux-navigator', lazy = false},
   -- AUTOPAIR parenthesis etc.
-  'jiangmiao/auto-pairs',
+  { 'jiangmiao/auto-pairs'},
   -- Clean python folding. z+c & z+a
-  {'tmhedberg/SimpylFold', ft = {"py", "python"}, lazy = true },
+  { 'tmhedberg/SimpylFold', ft = {"py", "python"}, lazy = true },
   --- Surround with parenthesis etc ---
-  { 'kylechui/nvim-surround', config = function() require('config.surround') end, },
+  { 'kylechui/nvim-surround', config = function() require('config.surround') end },
   --- Status bar
-  {'nvim-lualine/lualine.nvim', config = function() require('config.lualine') end, lazy = true},
+  { 'nvim-lualine/lualine.nvim', config = function() require('config.lualine') end, lazy = true },
   -- Latex compiler, auto-updates 'zathura' reader
-  {'lervag/vimtex', ft = {"tex", "latex"}, config = function() require('config.vimtex') end },
+  { 'lervag/vimtex', ft = {"tex", "latex"}, config = function() require('config.vimtex') end },
   --- COMMENTING EASIER ---
-  {'numToStr/Comment.nvim', lazy = false, config = function() require('config.comment') end },
-  {'JoosepAlviste/nvim-ts-context-commentstring',
-    ft = {"ts", "svelte", "react", "tsx"},
-    lazy = true,
-    dependencies = {
-      'numToStr/Comment.nvim'
-    }
+  {'numToStr/Comment.nvim', lazy = false,
+    dependencies = { 'JoosepAlviste/nvim-ts-context-commentstring' },
+    config = function() require('config.comment') end
   },
 
   --- DEBUGGING --- 
-  'folke/neodev.nvim',
+  { 'folke/neodev.nvim', lazy = true },
   { "mfussenegger/nvim-dap", lazy = true, dependencies = {"rcarriga/nvim-dap-ui"} },
 
   --- LSP AND COMPLETIONS
   { 'williamboman/mason.nvim', config = function() require('config.mason') end, lazy = true, cmd = "Mason"},
-  {'williamboman/mason-lspconfig.nvim', lazy = true},
-  { 'neovim/nvim-lspconfig', config = function() require('config.lspconfig') end, },
+  { 'williamboman/mason-lspconfig.nvim', lazy = true},
+  { 'neovim/nvim-lspconfig', config = function() require('config.lspconfig') end},
   { 'L3MON4D3/LuaSnip', config = function() require('config.luasnips') end, lazy = true },
 
   { 'hrsh7th/nvim-cmp',
@@ -103,9 +104,9 @@ return {
   },
 
   -- Rust stuff
-  {'simrat39/rust-tools.nvim', ft = {"rust", "rs"}, config = function() require('config.rust-tools') end },
+  { 'simrat39/rust-tools.nvim', ft = {"rust", "rs"}, config = function() require('config.rust-tools') end },
   -- Go stuff
-  {'ray-x/go.nvim', config = function() require('config.golang') end, dependencies = { 'ray-x/guihua.lua' }, ft = {"go", "golang"} },
+  { 'ray-x/go.nvim', ft = {"go", "golang"}, dependencies = { 'ray-x/guihua.lua' }, config = function() require('config.golang') end },
 
   --- CPP manual (requires network connection) ---
   { 'madskjeldgaard/cppman.nvim', dependencies = {'MunifTanjim/nui.nvim'}, ft = {"cpp", "hpp"} },
@@ -116,43 +117,43 @@ return {
     cmd = "Telescope"
   },
 
-  {'davidgranstrom/telescope-scdoc.nvim', lazy = true,
+  { 'davidgranstrom/telescope-scdoc.nvim', lazy = true,
     dependencies = {
       'nvim-telescope/telescope.nvim',
       'nvim-telescope/telescope-fzf-native.nvim',
       'nvim-telescope/telescope.nvim',
       'madskjeldgaard/telescope-supercollider.nvim',
-    }
-  },
-
-  { 'davidgranstrom/scnvim', ft = {"scd", "supercollider"}, config = function() require('config.supercollider') end, 
-    dependencies = {
       'madskjeldgaard/lua-supercollider-snippets',
     }
   },
 
-  -- Snippet support
-  {'norcalli/snippets.nvim', lazy = true},
+  { 'davidgranstrom/scnvim', ft = {"scd", "supercollider"}, config = function() require('config.supercollider') end },
 
-  { 'davidgranstrom/oblique-strategies.nvim', config = function() require('config.oblique') end },
-  
+  -- Snippet support
+  { 'norcalli/snippets.nvim', lazy = true},
 
   { "iamcco/markdown-preview.nvim",
+    ft = {'md', 'markdown'},
     config = function() 
       vim.fn["mkdp#util#install"]()
       require('config.mdpreview')
     end,
-    ft = {'md', 'markdown'}
   },
 
   -- Other faust things
   -- faust syntax and filetype
-  {'madskjeldgaard/faust-nvim',
+  { 'madskjeldgaard/faust-nvim',
     lazy = true,
     ft = {"dsp"},
     dependencies = {
       {'gmoe/vim-faust'}
     }
+  },
+  
+  -- Edit shared files as in google drive
+  { 'jbyuki/instant.nvim', lazy = true, cmd = "Instant", config = function() 
+    require('config.instant')
+    end 
   },
 }
 

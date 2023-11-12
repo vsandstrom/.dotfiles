@@ -19,7 +19,7 @@ scnvim.setup {
     ['<F1>'] = map_expr('s.boot'),
     ['<F2>'] = map_expr('s.meter'),
     ['<F3>'] = scnvim.map(function ()
-      require'telescope'.extensions.supercollider.sc_definitions()
+      require'telescope'.extensions.scdoc.sc_definitions()
     end, {'n', 'x', 'i'})
   },
   editor = {
