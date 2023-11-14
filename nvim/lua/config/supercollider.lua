@@ -6,7 +6,11 @@ scnvim.setup {
   keymaps = {
       ['<C-e>'] = {
         map('editor.send_block', {'i', 'n'}),
-        map('editor.send_selection', 'x'),
+        -- map('editor.send_selection', 'x'),
+        map(function()
+          require'scnvim.editor'.send_selection()
+          vim.cmd([[exe "normal! \<Esc>"]])
+        end, 'x')
       },
     ['<F5>'] = map('editor.send_block', {'i', 'n'}),
     ['<CR>'] = map('postwin.toggle', 'n'),
@@ -18,29 +22,25 @@ scnvim.setup {
     ['<leader>sk'] = map('sclang.recompile'),
     ['<F1>'] = map_expr('s.boot'),
     ['<F2>'] = map_expr('s.meter'),
-    ['<F3>'] = scnvim.map(function ()
+    ['<F3>'] = map(function ()
       require'telescope'.extensions.scdoc.sc_definitions()
-    end, {'n', 'x', 'i'})
+    end, {'n', 'x', 'i'}),
   },
   editor = {
     highlight = {
       color = 'IncSearch',
       type = 'flash',
       flash = {
-          repeats = 3,
+        repeats = 3,
       }
     },
   },
   postwin = {
     float = {
       enabled = true,
-      width = 64,
-      height = 52
+      height = 52,
+      width = 64
     },
   },
 }
 
-map(function()
-  require'scnvim.editor'.send_selection()
-  vim.cmd([[exe "normal! \<Esc>"]])
-end, 'x')
