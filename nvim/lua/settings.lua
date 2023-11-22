@@ -10,6 +10,7 @@ vim.g.mapleader = " "
 vim.g.did_load_filetypes = 1
 vim.g.transparent_enabled = true
 
+vim.g.python3_host_prog = "/usr/local/bin/python3.11"
 -- vim.diagnostic.config({
 --   virtual_text = true,
 -- })

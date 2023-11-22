@@ -6,7 +6,7 @@ local cursor = require('utils').cursorFollow
 local lines = require('utils').lineNumbers
 
 ----- NEOTREE -----
-map("n", "<C-o>", ":Neotree toggle<CR>", {desc = "Toggles NeoTree, legacy NERDTree key binding"})
+map("n", "<C-o>", "<CMD>Neotree toggle show<CR>", {desc = "show neotree without focusing"})
 ----- SUPERCOLLIDER -----
 map("n", "<C-k>", ":Telescope scdoc<CR>", {desc = "Telescope-scdoc search, similar as 'K'"})
 ----- SUPERCOLLIDER -----
@@ -30,6 +30,7 @@ map("t", "<esc>", "<C-\\><C-n>", {desc = "<ESC> works in terminal mode as in nor
 map('n', '<leader>l', '<CMD>Lazy sync<CR>')
 
 ----- CUSTOM -----
+
 
 map("n", "cc", "<ESC>:%substitute:<C-r><C-w>::g<LEFT><LEFT>", {desc = "Substitute all occurences of word under cursor"})
 

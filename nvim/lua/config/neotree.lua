@@ -159,7 +159,7 @@ require("neo-tree").setup({
             mappings = {
               ["<bs>"] = "navigate_up",
               ["."] = "set_root",
-              ["<C-o>"] = "toggle_hidden",
+              -- ["<C-o>"] = "toggle_hidden",
               ["/"] = "fuzzy_finder",
               ["D"] = "fuzzy_finder_directory",
               ["f"] = "filter_on_submit",

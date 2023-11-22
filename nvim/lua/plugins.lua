@@ -18,7 +18,7 @@ return {
 
 
   -- turns nvim transparent
-  { 'xiyaowong/nvim-transparent', lazy = false},
+  -- { 'xiyaowong/nvim-transparent', lazy = false},
   -- silly plugin to show active split --
   { 'levouh/tint.nvim', config = function() require('config.tint') end, lazy = true},
   -- key combo reminder
@@ -48,11 +48,11 @@ return {
     config = function() require('config.null_ls') end
   },
 
-   -- {'lvimr/lsp-inlayhints.nvim', branch = "anticonceal", 
-   --   config = function() 
+   -- {'lvimuser/lsp-inlayhints.nvim',
+   --   config = function()
    --     require('config.lsp_inlayhints')
    --   end
-   -- }
+   -- },
 
   -- TREESITTER --
   { 'nvim-treesitter/nvim-treesitter', config = function() require('config.treesitter') end },
