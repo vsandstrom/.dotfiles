@@ -47,6 +47,8 @@ case "${os}" in
             alias ino="$HOME/Documents/Arduino/"
             alias sc="$HOME/Documents/DAW/SC/"
             alias dsp="$HOME/Documents/Cpp/dsp/"
+            alias rdsp="$HOME/Documents/rust/dsp/"
+            alias daisy="$HOME/Documents/Daisy/"
         # Other aliases
           alias ssh='TERM=xterm-256color ssh'
           alias pdf="$HOME/Documents/PDF/Library"

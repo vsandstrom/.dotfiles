@@ -50,3 +50,14 @@ map({"n"}, "<C-k>", "<CMD>TmuxNavigateUp<CR>", {desc = "window up"})
 map({"n"}, "gd", "<CMD>Lspsaga goto_definition<CR>", {desc = "go to definition"})
 map({"n"}, "gD", "<CMD>Lspsaga peek_definition<CR>", {desc = "peek definition"})
 map({"n"}, "<leader>c", "<CMD>Lspsaga code_action<CR>", {desc = "code actions available"})
+
+--- Comment keymaps
+
+local api = require('Comment.api')
+-- vim.keymap.set({'n', 'v'}, 'gcc', api.toggle.linewise.current)
+-- vim.keymap.set({'n', 'v'}, 'gC', api.toggle.blockwise.current)
+
+
+--- Overseer:
+map({"n"}, "<C-p>", "<CMD>OverseerRun<CR>", {desc = "Open task manager"})
+

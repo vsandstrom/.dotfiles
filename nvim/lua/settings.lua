@@ -36,7 +36,7 @@ set.incsearch = true
 set.termguicolors = false
 set.hlsearch = true
 set.wrap = true
-set.textwidth = 100
+set.textwidth = 80
 set.signcolumn="yes:1"
 
 set.smartindent = true
@@ -58,4 +58,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
 vim.cmd("hi LspInlayHint guifg=#a5a5a1 guibg=#3e3e3e")
 
 vim.g.default_sequence_length = 4
-vim.g.supercollider_snippet_comma_newline = 1
+-- vim.g.supercollider_snippet_comma_newline = 1
+vim.g.skip_ts_context_commentstring_module = true

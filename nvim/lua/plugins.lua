@@ -16,6 +16,10 @@ return {
     end,
   },
 
+  { 'stevearc/overseer.nvim',
+    opts = {},
+    dependencies = { 'stevearc/dressing.nvim', 'rcarriga/nvim-notify' },
+  },
 
   -- turns nvim transparent
   -- { 'xiyaowong/nvim-transparent', lazy = false},
@@ -55,7 +59,12 @@ return {
    -- },
 
   -- TREESITTER --
-  { 'nvim-treesitter/nvim-treesitter', config = function() require('config.treesitter') end },
+  { 'nvim-treesitter/nvim-treesitter', 
+    config = function() require('config.treesitter')
+    end,
+  },
+
+  'JoosepAlviste/nvim-ts-context-commentstring',
   { 'nvim-treesitter/nvim-treesitter-textobjects', lazy = true },
   -- Replacement for default filetype.vim
   { "nathom/filetype.nvim", lazy = false, config = function() require('config.filetype') end },
@@ -82,9 +91,9 @@ return {
   { "mfussenegger/nvim-dap", lazy = true, dependencies = {"rcarriga/nvim-dap-ui"} },
 
   --- LSP AND COMPLETIONS
-  { 'williamboman/mason.nvim', config = function() require('config.mason') end, lazy = true, cmd = "Mason"},
-  { 'williamboman/mason-lspconfig.nvim', lazy = true},
   { 'neovim/nvim-lspconfig', config = function() require('config.lspconfig') end},
+  { 'williamboman/mason-lspconfig.nvim', lazy = true},
+  { 'williamboman/mason.nvim', config = function() require('config.mason') end, lazy = true, cmd = "Mason"},
   { 'L3MON4D3/LuaSnip', config = function() require('config.luasnips') end, lazy = true },
 
   { 'hrsh7th/nvim-cmp',
@@ -140,6 +149,13 @@ return {
     end,
   },
 
+  { 'aspeddro/pandoc.nvim',
+    ft = {"md", "markdown"},
+    config = function ()
+      require'pandoc'.setup()
+end
+  },
+
   -- Other faust things
   -- faust syntax and filetype
   { 'madskjeldgaard/faust-nvim',
@@ -149,11 +165,17 @@ return {
       {'gmoe/vim-faust'}
     }
   },
-  
+
+  { 'norcalli/nvim-colorizer.lua',
+    config = function()
+      require("colorizer").setup()
+    end
+  },
+
   -- Edit shared files as in google drive
   { 'jbyuki/instant.nvim', lazy = true, cmd = "Instant", config = function() 
     require('config.instant')
-    end 
+    end
   },
 }
 
