@@ -9,10 +9,41 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
+
 vim.opt.rtp:prepend(lazypath)
 
 require('settings')
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", {
+  defaults = {
+		lazy = true,
+		version = nil, -- dont use version="*"
+	},
+	install = {
+		missing = true,
+	},
+	checker = {
+		enabled = true,
+		notify = false,
+	},
+	change_detection = {
+		enabled = true,
+		notify = false,
+	},
+	performance = {
+		rtp = {
+			disabled_plugins = {
+				"gzip",
+				-- "matchit",
+				-- "matchparen",
+				"netrwPlugin",
+				"tarPlugin",
+				"tohtml",
+				-- "tutor",
+				"zipPlugin",
+			},
+		},
+	},
+})
 
 ---- PLUGIN CONFIG ----
 -- require('config.high-str')

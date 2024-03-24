@@ -24,6 +24,9 @@ case "${os}" in
             alias ts="$HOME/Documents/js/TS"
             alias gl="$HOME/Documents/go/"
             alias rust="$HOME/Documents/rust/"
+            alias darkmode="brightnessctl s 40%"
+            alias darkestmode="brightnessctl s 25%"
+            alias lightmode="brightnessctl s 65%"
         ;;
     Darwin*) 
         echo "MacOS"
