@@ -61,3 +61,7 @@ local api = require('Comment.api')
 --- Overseer:
 map({"n"}, "<C-p>", "<CMD>OverseerRun<CR>", {desc = "Open task manager"})
 
+
+--- FzfLua:
+map({'n'}, "<leader>b", "<CMD>FzfLua buffers<CR>", {desc = "FzfLua buffers"})
+map({'n'}, "<leader>g", "<CMD>FzfLua live_grep<CR>", {desc = "FzfLua live_grep"})

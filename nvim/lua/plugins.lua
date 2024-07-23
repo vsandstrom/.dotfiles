@@ -88,7 +88,10 @@ return {
 
   --- DEBUGGING --- 
   { 'folke/neodev.nvim', lazy = true },
-  { "mfussenegger/nvim-dap", lazy = true, dependencies = {"rcarriga/nvim-dap-ui"} },
+  { "mfussenegger/nvim-dap", lazy = true,
+    dependencies = {"rcarriga/nvim-dap-ui"},
+    config = function () require('config.dap') end
+  },
 
   --- LSP AND COMPLETIONS
   { 'neovim/nvim-lspconfig', config = function() require('config.lspconfig') end},
@@ -110,6 +113,12 @@ return {
     config = function()
       require('config.cmp-nvim-lsp') -- ***
     end,
+  },
+
+  -- FZF in lua
+  { "ibhagwan/fzf-lua",
+    -- optional for icon support
+    requires = { "nvim-tree/nvim-web-devicons" }
   },
 
   -- Rust stuff
