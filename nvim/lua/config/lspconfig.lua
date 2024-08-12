@@ -42,6 +42,8 @@ local servers = {
   'tsserver', 'clangd', 'lua_ls',  'pylsp', 'bashls', 'ltex', 'volar', 'html', 'cssls', 'gopls', 'omnisharp', 'svelte', 'jdtls',
   -- 'rust_analyzer'
 }
+
+
 for _, lsp in pairs(servers) do
   -- Lua LSP needed a bit coaxing
   if lsp == "lua_ls" then
@@ -70,10 +72,73 @@ for _, lsp in pairs(servers) do
               }
             })
 
-            client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+            client.notify("workspace/didChangeConfiguration", {
+              settings = client.config.settings
+            })
           end
           return true
         end
+    }
+
+  elseif lsp == "tsserver" then
+    require"lspconfig".tsserver.setup{
+      settings = {
+        typescript = {
+          inlayHints = {
+            includeInlayParameterNameHints = "all",
+            includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayVariableTypeHints = true,
+            includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+            includeInlayPropertyDeclarationTypeHints = true,
+            includeInlayFunctionLikeReturnTypeHints = true,
+            includeInlayEnumMemberValueHints = true,
+          },
+        },
+        javascript = {
+          inlayHints = {
+            includeInlayParameterNameHints = "all",
+            includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayVariableTypeHints = true,
+            includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+            includeInlayPropertyDeclarationTypeHints = true,
+            includeInlayFunctionLikeReturnTypeHints = true,
+            includeInlayEnumMemberValueHints = true,
+          },
+        },
+      }
+    }
+
+  elseif lsp == "svelte" then
+    require('lspconfig').svelte.setup {
+      settings = {
+        typescript = {
+          inlayHints = {
+            parameterNames = { enabled = 'all' },
+            parameterTypes = { enabled = true },
+            variableTypes = { enabled = true },
+            propertyDeclarationTypes = { enabled = true },
+            functionLikeReturnTypes = { enabled = true },
+            enumMemberValues = { enabled = true },
+          },
+        },
+      },
+    }
+
+  elseif lsp == "clangd" then
+    require("lspconfig").clangd.setup{
+      settings = {
+        clangd = {
+          InlayHints = {
+            Designators = true,
+            Enabled = true,
+            ParameterNames = true,
+            DeducedTypes = true,
+          },
+          fallbackFlags = { "-std=c++20" },
+        },
+      }
     }
   elseif lsp == "omnisharp" then
     local pid = vim.fn.getpid()
@@ -109,21 +174,6 @@ for _, lsp in pairs(servers) do
       },
       on_attach = on_attach,
     }
-  -- elseif lsp == "rust-analyzer" then
-  --   require('lspconfig')[lsp].setup{
-  --     settings = {
-  --       ["rust-analyzer"] = {
-  --         diagnostics = {
-  --             enable = true,
-  --             disabled = {"unresolved-proc-macro"},
-  --             -- enableExperimental = true,
-  --         }
-  --       }
-  --     },
-  --     on_attach = on_attach,
-  --     filetypes = {'rust'},
-  --   }
-  -- default the other lsp services
   else
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
@@ -170,3 +220,4 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     update_in_insert = false,
   }
 )
+

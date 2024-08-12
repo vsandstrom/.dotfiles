@@ -162,6 +162,9 @@ local opts = {
     -- standalone file support
     -- setting it to false may improve startup time
     standalone = false,
+    check = {
+      command = "clippy"
+    }
   }, -- rust-analyzer options
 
   -- debugging stuff

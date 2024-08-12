@@ -38,6 +38,7 @@ set.hlsearch = true
 set.wrap = true
 set.textwidth = 80
 set.signcolumn="yes:1"
+set.conceallevel=1
 
 set.smartindent = true
 
