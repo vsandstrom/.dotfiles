@@ -3,16 +3,16 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME=""
 
-PROMPT='%B%F{203}%n%F{202}@%F{203}%m%b%F{15}:%F{141}%(5~|%-1~/…/%3~|%4~)%f '
+# PROMPT='%B%F{203}%n%F{202}@%F{203}%m%b%F{15}:%F{141}%(5~|%-1~/…/%3~|%4~)%f '
+PROMPT='%F{141}%(5~|%-1~/…/%3~|%4~)%f '
 RPROMPT='%F{7}[ %* - %D ]'
 
 plugins=(git aliases nmap)
 
+
 source $ZSH/oh-my-zsh.sh
 
-if [ -f ~/.bash_profile ]; then 
-    . ~/.bash_profile;
-fi
+export EMSDK_QUIET=1
 export PATH="/usr/local/sbin:$PATH"
 
 # Put the line below in ~/.zshrc:
@@ -37,6 +37,9 @@ j() {
 typeset -gaU chpwd_functions
 chpwd_functions+=__jump_chpwd
 
+# completions directory
+fpath=(~/.completions $fpath)
+
 compctl -U -K jump_completion j
 
 export NVM_DIR="$HOME/.nvm"
@@ -48,5 +51,57 @@ export PATH="/usr/local/opt/llvm/bin:$PATH"
 if [ -f ~/.bash_profile ]; then 
     . ~/.bash_profile;
 fi
+if command -v ngrok &>/dev/null; then
+    eval "$(ngrok completion)"
+fi
 
 export PATH="/usr/local/opt/texinfo/bin:$PATH"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/usr/local/opt/texinfo/bin:$PATH"
+export PATH="/usr/local/texlive/2023/bin/universal-darwin:$PATH"
+export PATH="/usr/local/opt/openssl@3/bin:$PATH"
+export PATH=$HOME/bin:$PATH
+export PATH=$HOME/bin:$PATH
+# SuperCollider SCLANG path
+export PATH="/Applications/SuperCollider/SuperCollider.app/Contents/MacOS:${PATH}"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+# export PATH=$HOME/.cargo/bin/rust-analyzer:$PATH 
+
+# Set typewritten ZSH as a prompt
+# autoload -U promptinit; promptinit
+# prompt typewritten
+
+# bun completions
+[ -s "/Users/viktorsandstrom/.bun/_bun" ] && source "/Users/viktorsandstrom/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="/usr/local/opt/postgresql@15/bin:$PATH"
+
+# opam configuration
+[[ ! -r /Users/viktorsandstrom/.opam/opam-init/init.zsh ]] || source /Users/viktorsandstrom/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+export PATH="/usr/local/opt/binutils/bin:$PATH"
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/viktorsandstrom/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/viktorsandstrom/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/viktorsandstrom/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/viktorsandstrom/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# fortune | cowsay -f small
+
+export STM32CubeMX_PATH=/Applications/STMicroelectronics/STM32CubeMX.app/Contents/Resources
+
+[ -f "/Users/viktorsandstrom/.ghcup/env" ] && . "/Users/viktorsandstrom/.ghcup/env" # ghcup-env
