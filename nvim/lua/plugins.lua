@@ -76,8 +76,14 @@ return {
   { 'folke/which-key.nvim', config = function() require('config.which-key') end, lazy = true},
 
   { "nvim-neo-tree/neo-tree.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim", },
-    config = function() require('config.neotree') end
+    branch = 'v3.x',
+    dependencies = { 
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim", 
+      "nvim-tree/nvim-web-devicons",
+      "3rd/image.nvim"
+    },
+    config = function() require('config.neo-tree') end
   },
 
   -- startup screen --

@@ -39,13 +39,16 @@ foreground = "0xc8c093"
 [font]
 size = 9.0
 
-# [font.bold]
+[font.bold]
+# family = "DejaVuSansMono Nerd Font Mono"
+family = "DejaVuSansMono"
+
+[font.italic]
+family = "DejaVuSansMono"
 # family = "DejaVuSansMono Nerd Font Mono"
 
-# [font.italic]
-# family = "DejaVuSansMono Nerd Font Mono"
-
-# [font.normal]
+[font.normal]
+family = "DejaVuSansMono"
 # family = "DejaVuSansMono Nerd Font Mono"
 
 [mouse]
