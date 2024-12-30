@@ -74,16 +74,16 @@ return {
   { 'levouh/tint.nvim', config = function() require('config.tint') end, lazy = true},
   -- key combo reminder
   { 'folke/which-key.nvim', config = function() require('config.which-key') end, lazy = true},
-
   { "nvim-neo-tree/neo-tree.nvim",
-    branch = 'v3.x',
+    lazy = false,
+    branch = "v3.x",
     dependencies = { 
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim", 
       "nvim-tree/nvim-web-devicons",
       "3rd/image.nvim"
     },
-    config = function() require('config.neo-tree') end
+    config = function() require('config.neotree') end
   },
 
   -- startup screen --
@@ -248,5 +248,8 @@ end
     require('config.instant')
     end
   },
+  
+
+
 }
 
