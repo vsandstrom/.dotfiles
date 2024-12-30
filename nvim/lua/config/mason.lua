@@ -9,7 +9,7 @@ require('mason-lspconfig').setup{
     "html";
     "ltex",
     "omnisharp",
-    "tsserver",
+    "ts_ls",
     "pylsp",
     "lua_ls",
     "clangd",

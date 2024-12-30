@@ -32,6 +32,7 @@ case "${os}" in
         alias g++="g++-12"
         alias python="python3.11"
         alias python3="python3.11"
+        alias lg="lazygit"
         # Shortcuts to programming stuff
             alias c="$HOME/Documents/C/"
             alias cpp="$HOME/Documents/Cpp/"

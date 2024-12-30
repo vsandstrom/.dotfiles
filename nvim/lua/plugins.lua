@@ -17,12 +17,19 @@ return {
     end
   },
 
-  { 'davidgranstrom/oblique-strategies.nvim', 
+  { 'davidgranstrom/oblique-strategies.nvim',
     lazy = false,
     priority = 999,
     config = function()
       require('config.oblique')
     end,
+  },
+
+  {
+    'martineausimon/nvim-lilypond-suite',
+    config = function ()
+      require('nvls').setup({})
+    end
   },
 
   {
@@ -119,7 +126,10 @@ return {
   --- Status bar
   { 'nvim-lualine/lualine.nvim', config = function() require('config.lualine') end, lazy = true },
   -- Latex compiler, auto-updates 'zathura' reader
-  { 'lervag/vimtex', ft = {"tex", "latex"}, config = function() require('config.vimtex') end },
+  { 'lervag/vimtex', ft = {"tex", "latex"}, lazy = false, config = function() 
+    require('config.vimtex') 
+  end
+  },
   --- COMMENTING EASIER ---
   {'numToStr/Comment.nvim', lazy = false,
     dependencies = { 'JoosepAlviste/nvim-ts-context-commentstring' },
