@@ -37,19 +37,16 @@ background = "0x2d4f67"
 foreground = "0xc8c093"
 
 [font]
-size = 9.0
+size = 14.0
 
 [font.bold]
-# family = "DejaVuSansMono Nerd Font Mono"
-family = "DejaVuSansMono"
+family = "DejaVuSansMono Nerd Font Mono"
 
 [font.italic]
-family = "DejaVuSansMono"
-# family = "DejaVuSansMono Nerd Font Mono"
+family = "DejaVuSansMono Nerd Font Mono"
 
 [font.normal]
-family = "DejaVuSansMono"
-# family = "DejaVuSansMono Nerd Font Mono"
+family = "DejaVuSansMono Nerd Font Mono"
 
 [mouse]
 hide_when_typing = true

@@ -124,7 +124,7 @@ return {
   -- SEAMLESS NAVIGATION BETWEEN NVIM AND TMUX PANES
   { 'christoomey/vim-tmux-navigator', lazy = false},
   -- AUTOPAIR parenthesis etc.
-  { 'jiangmiao/auto-pairs'},
+  { 'jiangmiao/auto-pairs', lazy = false, config = function() require('auto-pairs').setup{} end},
   -- Clean python folding. z+c & z+a
   { 'tmhedberg/SimpylFold', ft = {"py", "python"}, lazy = true },
   --- Surround with parenthesis etc ---
