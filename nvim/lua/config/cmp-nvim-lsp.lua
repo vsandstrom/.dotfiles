@@ -98,13 +98,13 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 -- require('lspconfig')['rust_analyzer'].setup {
 --   capabilities = capabilities
 -- }
-require('lspconfig')['tsserver'].setup {
+require('lspconfig')['ts_ls'].setup {
 capabilities = capabilities
 }
 require('lspconfig')['clangd'].setup {
 capabilities = capabilities
 }
-require('lspconfig')['pyright'].setup {
+require('lspconfig')['pylsp'].setup {
 capabilities = capabilities
 }
 

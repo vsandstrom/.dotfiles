@@ -51,6 +51,12 @@ export PATH="/usr/local/opt/llvm/bin:$PATH"
 if [ -f ~/.bash_profile ]; then 
     . ~/.bash_profile;
 fi
+
+
+if [ -f ~/.bash_aliases ]; then 
+    . ~/.bash_aliases;
+fi
+
 if command -v ngrok &>/dev/null; then
     eval "$(ngrok completion)"
 fi
@@ -105,3 +111,7 @@ unset __conda_setup
 export STM32CubeMX_PATH=/Applications/STMicroelectronics/STM32CubeMX.app/Contents/Resources
 
 [ -f "/Users/viktorsandstrom/.ghcup/env" ] && . "/Users/viktorsandstrom/.ghcup/env" # ghcup-env
+export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
+
+# Created by `pipx` on 2024-11-30 10:27:52
+export PATH="$PATH:/Users/viktorsandstrom/.local/bin"
