@@ -8,21 +8,28 @@ return {
     end,
   },
 
-  {
-    'MysticalDevil/inlay-hints.nvim',
-    event = "LspAttach",
-    dependencies = { "neovim/nvim-lspconfig" },
-    config = function ()
-      require'inlay-hints'.setup()
-    end
-  },
+  -- {
+  --   'MysticalDevil/inlay-hints.nvim',
+  --   event = "LspAttach",
+  --   dependencies = { "neovim/nvim-lspconfig" },
+  --   config = function ()
+  --     require'inlay-hints'.setup()
+  --   end
+  -- },
 
-  { 'davidgranstrom/oblique-strategies.nvim', 
+  { 'davidgranstrom/oblique-strategies.nvim',
     lazy = false,
     priority = 999,
     config = function()
       require('config.oblique')
     end,
+  },
+
+  {
+    'martineausimon/nvim-lilypond-suite',
+    config = function ()
+      require('nvls').setup({})
+    end
   },
 
   {
@@ -64,12 +71,18 @@ return {
   -- turns nvim transparent
   -- { 'xiyaowong/nvim-transparent', lazy = false},
   -- silly plugin to show active split --
-  { 'levouh/tint.nvim', config = function() require('config.tint') end, lazy = true},
+  { 'levouh/tint.nvim', config = function() require('config.tint') end, lazy = false},
   -- key combo reminder
   { 'folke/which-key.nvim', config = function() require('config.which-key') end, lazy = true},
-
   { "nvim-neo-tree/neo-tree.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim", },
+    lazy = false,
+    branch = "v3.x",
+    dependencies = { 
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim", 
+      "nvim-tree/nvim-web-devicons",
+      -- "3rd/image.nvim"
+    },
     config = function() require('config.neotree') end
   },
 
@@ -82,15 +95,15 @@ return {
   --- Treesitter expansions ---
 
   { 'windwp/nvim-ts-autotag',
-    ft = {"ts", "svelte", "react", "tsx"},
-    lazy = true,
+    ft = {"ts", "svelte", "react", "tsx", "html"},
+    lazy = false,
   },
 
-  { 'jose-elias-alvarez/null-ls.nvim',
-    lazy = "VeryLazy",
-    ft = {"ts", "svelte", "tsx", "rust", "c", "cpp"},
-    config = function() require('config.null_ls') end
-  },
+  -- { 'jose-elias-alvarez/null-ls.nvim',
+  --   lazy = "VeryLazy",
+  --   ft = {"ts", "svelte", "tsx", "rust", "c", "cpp"},
+  --   config = function() require('config.null_ls') end
+  -- },
 
    -- {'lvimuser/lsp-inlayhints.nvim',
    --   config = function()
@@ -99,10 +112,7 @@ return {
    -- },
 
   -- TREESITTER --
-  { 'nvim-treesitter/nvim-treesitter', 
-    config = function() require('config.treesitter')
-    end,
-  },
+  { 'nvim-treesitter/nvim-treesitter', config = function() require('config.treesitter') end, },
 
   'JoosepAlviste/nvim-ts-context-commentstring',
   { 'nvim-treesitter/nvim-treesitter-textobjects', lazy = true },
@@ -110,17 +120,11 @@ return {
   { "nathom/filetype.nvim", lazy = false, config = function() require('config.filetype') end },
   -- SEAMLESS NAVIGATION BETWEEN NVIM AND TMUX PANES
   { 'christoomey/vim-tmux-navigator', lazy = false},
+--  --- Surround with parenthesis etc ---
+  { 'kylechui/nvim-surround', lazy = false, config = function() require('config.surround') end },
   -- AUTOPAIR parenthesis etc.
-  { 'jiangmiao/auto-pairs'},
+  { 'jiangmiao/auto-pairs', lazy = false},
   -- Clean python folding. z+c & z+a
-  { 'tmhedberg/SimpylFold', ft = {"py", "python"}, lazy = true },
-  --- Surround with parenthesis etc ---
-  { 'kylechui/nvim-surround', config = function() require('config.surround') end },
-  --- Status bar
-  { 'nvim-lualine/lualine.nvim', config = function() require('config.lualine') end, lazy = true },
-  -- Latex compiler, auto-updates 'zathura' reader
-  { 'lervag/vimtex', ft = {"tex", "latex"}, config = function() require('config.vimtex') end },
-  --- COMMENTING EASIER ---
   {'numToStr/Comment.nvim', lazy = false,
     dependencies = { 'JoosepAlviste/nvim-ts-context-commentstring' },
     config = function() require('config.comment') end
@@ -134,10 +138,64 @@ return {
   },
 
   --- LSP AND COMPLETIONS
-  { 'neovim/nvim-lspconfig', config = function() require('config.lspconfig') end},
+  -- { 'neovim/nvim-lspconfig', config = function() require('config.lspconfig') end},
   { 'williamboman/mason-lspconfig.nvim', lazy = true},
   { 'williamboman/mason.nvim', config = function() require('config.mason') end, lazy = true, cmd = "Mason"},
   { 'L3MON4D3/LuaSnip', config = function() require('config.luasnips') end, lazy = true },
+
+  -- {
+  --   'saghen/blink.cmp',
+  --   -- optional: provides snippets for the snippet source
+  --   dependencies = { 'rafamadriz/friendly-snippets' },
+  --
+  --   -- use a release tag to download pre-built binaries
+  --   version = '1.*',
+  --   -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+  --   -- build = 'cargo build --release',
+  --   -- If you use nix, you can build from source using latest nightly rust with:
+  --   -- build = 'nix run .#build-plugin',
+  --
+  --   ---@module 'blink.cmp'
+  --   ---@type blink.cmp.Config
+  --   opts = {
+  --     -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
+  --     -- 'super-tab' for mappings similar to vscode (tab to accept)
+  --     -- 'enter' for enter to accept
+  --     -- 'none' for no mappings
+  --     --
+  --     -- All presets have the following mappings:
+  --     -- C-space: Open menu or open docs if already open
+  --     -- C-n/C-p or Up/Down: Select next/previous item
+  --     -- C-e: Hide menu
+  --     -- C-k: Toggle signature help (if signature.enabled = true)
+  --     --
+  --     -- See :h blink-cmp-config-keymap for defining your own keymap
+  --     keymap = { preset = 'default' },
+  --
+  --     appearance = {
+  --       -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+  --       -- Adjusts spacing to ensure icons are aligned
+  --       nerd_font_variant = 'mono'
+  --     },
+  --
+  --     -- (Default) Only show the documentation popup when manually triggered
+  --     completion = { documentation = { auto_show = false } },
+  --
+  --     -- Default list of enabled providers defined so that you can extend it
+  --     -- elsewhere in your config, without redefining it, due to `opts_extend`
+  --     sources = {
+  --       default = { 'lsp', 'path', 'snippets', 'buffer' },
+  --     },
+  --
+  --     -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
+  --     -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
+  --     -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
+  --     --
+  --     -- See the fuzzy documentation for more information
+  --     fuzzy = { implementation = "prefer_rust_with_warning" }
+  --   },
+  --   opts_extend = { "sources.default" }
+  -- },
 
   { 'hrsh7th/nvim-cmp',
     event = "InsertEnter",
@@ -153,6 +211,7 @@ return {
     config = function()
       require('config.cmp-nvim-lsp') -- ***
     end,
+    lazy = false
   },
 
   -- FZF in lua
@@ -164,11 +223,11 @@ return {
   -- Rust stuff
   -- { 'simrat39/rust-tools.nvim', ft = {"rust", "rs"}, config = function() require('config.rust-tools') end },
 
-  {
-    'mrcjkb/rustaceanvim',
-    version = '^5', -- Recommended
-    lazy = false, -- This plugin is already lazy
-  },
+  -- {
+  --   'mrcjkb/rustaceanvim',
+  --   version = '^5', -- Recommended
+  --   lazy = false, -- This plugin is already lazy
+  -- },
   -- Go stuff
   { 'ray-x/go.nvim', ft = {"go", "golang"}, dependencies = { 'ray-x/guihua.lua' }, config = function() require('config.golang') end },
 
@@ -194,7 +253,7 @@ return {
   { 'davidgranstrom/scnvim', ft = {"scd", "supercollider"}, config = function() require('config.supercollider') end },
 
   -- Snippet support
-  { 'norcalli/snippets.nvim', lazy = true},
+  { 'norcalli/snippets.nvim', lazy = false},
 
   { "iamcco/markdown-preview.nvim",
     ft = {'md', 'markdown'},
@@ -208,7 +267,7 @@ return {
     ft = {"md", "markdown"},
     config = function ()
       require'pandoc'.setup()
-end
+    end
   },
 
   -- Other faust things
@@ -233,4 +292,3 @@ end
     end
   },
 }
-

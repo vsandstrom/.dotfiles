@@ -24,6 +24,9 @@ case "${os}" in
             alias ts="$HOME/Documents/js/TS"
             alias gl="$HOME/Documents/go/"
             alias rust="$HOME/Documents/rust/"
+            alias darkmode="brightnessctl s 40%"
+            alias darkestmode="brightnessctl s 25%"
+            alias lightmode="brightnessctl s 65%"
         ;;
     Darwin*) 
         echo "MacOS"
@@ -32,6 +35,7 @@ case "${os}" in
         alias g++="g++-12"
         alias python="python3.11"
         alias python3="python3.11"
+        alias lg="lazygit"
         # Shortcuts to programming stuff
             alias c="$HOME/Documents/C/"
             alias cpp="$HOME/Documents/Cpp/"
@@ -53,6 +57,8 @@ case "${os}" in
           alias ssh='TERM=xterm-256color ssh'
           alias pdf="$HOME/Documents/PDF/Library"
           alias cv="$HOME/Documents/CV"
+          alias notes="$HOME/Documents/notes"
+          alias sc_startup="nvim $HOME/Library/Application\ Support/SuperCollider/startup.scd"
         # RISC-V compiler 
           alias riscv=". $HOME/esp-idf/export.sh"
         # Clearing attribute from com.apple.quarantine - allowing for all vst/au components to be opened

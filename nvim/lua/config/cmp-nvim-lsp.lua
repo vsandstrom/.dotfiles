@@ -92,11 +92,23 @@ cmp.setup.cmdline(':', {
 
 
 
--- Set up lspconfig.
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
--- require('lspconfig')['rust_analyzer'].setup {
+-- -- Set up lspconfig.
+-- local capabilities = vim.lsp.protocol.make_client_capabilities())
+-- -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+-- -- require('lspconfig')['rust_analyzer'].setup {
+-- --   capabilities = capabilities
+-- -- }
+-- vim.lsp.config('*', {
 --   capabilities = capabilities
+-- })
+-- require('lspconfig')['ts_ls'].setup {
+-- capabilities = capabilities
+-- }
+-- require('lspconfig')['clangd'].setup {
+-- capabilities = capabilities
+-- }
+-- require('lspconfig')['pyright'].setup {
+-- capabilities = capabilities
 -- }
 require('lspconfig')['ts_ls'].setup {
 capabilities = capabilities

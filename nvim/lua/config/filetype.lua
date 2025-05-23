@@ -11,6 +11,7 @@ require('filetype').setup({
       sh = 'sh',
       tex = 'tex',
       lua = 'lua',
+      svelte = 'svelte'
 
     },
     complex = {
