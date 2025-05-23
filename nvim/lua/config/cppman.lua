@@ -1,5 +1,3 @@
 local cppman = require('cppman')
-cppman.setup({
-
-})
+cppman.setup({ })
 

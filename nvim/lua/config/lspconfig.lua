@@ -39,110 +39,112 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = {
-  'ts_ls', 'clangd', 'lua_ls',  'pylsp', 'bashls', 'ltex', 'volar', 'html', 'cssls', 'gopls', 'omnisharp', 'svelte', 'jdtls',
+  'pylsp', 'bashls', 'ltex', 'volar', 'html', 'cssls', 'gopls', 'omnisharp', 'jdtls',
   -- 'rust_analyzer'
+  -- 'ts_ls', 'clangd', 
+  -- 'lua_ls',  
 }
 
 
 for _, lsp in pairs(servers) do
   -- Lua LSP needed a bit coaxing
-  if lsp == "lua_ls" then
-    require('lspconfig')[lsp].setup {
-      on_init = function(client)
-          local path = client.workspace_folders[1].name
-          if not vim.loop.fs_stat(path..'/.luarc.json') and not vim.loop.fs_stat(path..'/.luarc.jsonc') then
-            client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
-              Lua = {
-                runtime = {
-                  -- Tell the language server which version of Lua you're using
-                  -- (most likely LuaJIT in the case of Neovim)
-                  version = 'LuaJIT'
-                },
-                -- Make the server aware of Neovim runtime files
-                workspace = {
-                  checkThirdParty = false,
-                  library = {
-                    vim.env.VIMRUNTIME
-                    -- "${3rd}/luv/library"
-                    -- "${3rd}/busted/library",
-                  }
-                  -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
-                  -- library = vim.api.nvim_get_runtime_file("", true)
-                }
-              }
-            })
+  -- if lsp == "lua_ls" then
+  --   require('lspconfig')[lsp].setup {
+  --     on_init = function(client)
+  --         local path = client.workspace_folders[1].name
+  --         if not vim.loop.fs_stat(path..'/.luarc.json') and not vim.loop.fs_stat(path..'/.luarc.jsonc') then
+  --           client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
+  --             Lua = {
+  --               runtime = {
+  --                 -- Tell the language server which version of Lua you're using
+  --                 -- (most likely LuaJIT in the case of Neovim)
+  --                 version = 'LuaJIT'
+  --               },
+  --               -- Make the server aware of Neovim runtime files
+  --               workspace = {
+  --                 checkThirdParty = false,
+  --                 library = {
+  --                   vim.env.VIMRUNTIME
+  --                   -- "${3rd}/luv/library"
+  --                   -- "${3rd}/busted/library",
+  --                 }
+  --                 -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
+  --                 -- library = vim.api.nvim_get_runtime_file("", true)
+  --               }
+  --             }
+  --           })
+  --
+  --           client.notify("workspace/didChangeConfiguration", {
+  --             settings = client.config.settings
+  --           })
+  --         end
+  --         return true
+  --       end
+  --   }
 
-            client.notify("workspace/didChangeConfiguration", {
-              settings = client.config.settings
-            })
-          end
-          return true
-        end
-    }
+  -- elseif lsp == "tsserver" then
+  --   require"lspconfig".tsserver.setup{
+  --     settings = {
+  --       typescript = {
+  --         inlayHints = {
+  --           includeInlayParameterNameHints = "all",
+  --           includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+  --           includeInlayFunctionParameterTypeHints = true,
+  --           includeInlayVariableTypeHints = true,
+  --           includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+  --           includeInlayPropertyDeclarationTypeHints = true,
+  --           includeInlayFunctionLikeReturnTypeHints = true,
+  --           includeInlayEnumMemberValueHints = true,
+  --         },
+  --       },
+  --       javascript = {
+  --         inlayHints = {
+  --           includeInlayParameterNameHints = "all",
+  --           includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+  --           includeInlayFunctionParameterTypeHints = true,
+  --           includeInlayVariableTypeHints = true,
+  --           includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+  --           includeInlayPropertyDeclarationTypeHints = true,
+  --           includeInlayFunctionLikeReturnTypeHints = true,
+  --           includeInlayEnumMemberValueHints = true,
+  --         },
+  --       },
+  --     }
+  --   }
 
-  elseif lsp == "tsserver" then
-    require"lspconfig".tsserver.setup{
-      settings = {
-        typescript = {
-          inlayHints = {
-            includeInlayParameterNameHints = "all",
-            includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-            includeInlayFunctionParameterTypeHints = true,
-            includeInlayVariableTypeHints = true,
-            includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-            includeInlayPropertyDeclarationTypeHints = true,
-            includeInlayFunctionLikeReturnTypeHints = true,
-            includeInlayEnumMemberValueHints = true,
-          },
-        },
-        javascript = {
-          inlayHints = {
-            includeInlayParameterNameHints = "all",
-            includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-            includeInlayFunctionParameterTypeHints = true,
-            includeInlayVariableTypeHints = true,
-            includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-            includeInlayPropertyDeclarationTypeHints = true,
-            includeInlayFunctionLikeReturnTypeHints = true,
-            includeInlayEnumMemberValueHints = true,
-          },
-        },
-      }
-    }
+  -- elseif lsp == "svelte" then
+  --   require('lspconfig').svelte.setup {
+  --     settings = {
+  --       cmd = {"svelte-language-server", "--stdio"},
+  --       filetypes = {"svelte"},
+  --       typescript = {
+  --         inlayHints = {
+  --           parameterNames = { enabled = 'all' },
+  --           parameterTypes = { enabled = true },
+  --           variableTypes = { enabled = true },
+  --           propertyDeclarationTypes = { enabled = true },
+  --           functionLikeReturnTypes = { enabled = true },
+  --           enumMemberValues = { enabled = true },
+  --         },
+  --       },
+  --     },
+  --   }
 
-  elseif lsp == "svelte" then
-    require('lspconfig').svelte.setup {
-      settings = {
-        cmd = {"svelteserver", "--stdio"},
-        filetypes = {"svelte"},
-        typescript = {
-          inlayHints = {
-            parameterNames = { enabled = 'all' },
-            parameterTypes = { enabled = true },
-            variableTypes = { enabled = true },
-            propertyDeclarationTypes = { enabled = true },
-            functionLikeReturnTypes = { enabled = true },
-            enumMemberValues = { enabled = true },
-          },
-        },
-      },
-    }
-
-  elseif lsp == "clangd" then
-    require("lspconfig").clangd.setup{
-      settings = {
-        clangd = {
-          InlayHints = {
-            Designators = true,
-            Enabled = true,
-            ParameterNames = true,
-            DeducedTypes = true,
-          },
-          fallbackFlags = { "-std=c++20" },
-        },
-      }
-    }
-  elseif lsp == "omnisharp" then
+  -- elseif lsp == "clangd" then
+  --   require("lspconfig").clangd.setup{
+  --     settings = {
+  --       clangd = {
+  --         InlayHints = {
+  --           Designators = true,
+  --           Enabled = true,
+  --           ParameterNames = true,
+  --           DeducedTypes = true,
+  --         },
+  --         fallbackFlags = { "-std=c++20" },
+  --       },
+  --     }
+  --   }
+  if lsp == "omnisharp" then
     local pid = vim.fn.getpid()
     local omnisharp_bin = "/Users/viktorsandstrom/Downloads/omnisharp-osx-x64-net6.0/OmniSharp"
     require('lspconfig')[lsp].setup{

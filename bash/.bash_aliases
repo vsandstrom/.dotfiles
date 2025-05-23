@@ -57,6 +57,8 @@ case "${os}" in
           alias ssh='TERM=xterm-256color ssh'
           alias pdf="$HOME/Documents/PDF/Library"
           alias cv="$HOME/Documents/CV"
+          alias notes="$HOME/Documents/notes"
+          alias sc_startup="nvim $HOME/Library/Application\ Support/SuperCollider/startup.scd"
         # RISC-V compiler 
           alias riscv=". $HOME/esp-idf/export.sh"
         # Clearing attribute from com.apple.quarantine - allowing for all vst/au components to be opened

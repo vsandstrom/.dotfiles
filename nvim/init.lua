@@ -12,6 +12,9 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+vim.lsp.enable({'clangd',  'ts_ls', 'svelte', 'luals', 'rust-analyzer'})
+vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+
 require('settings')
 require("lazy").setup("plugins", {
   defaults = {
@@ -45,5 +48,33 @@ require("lazy").setup("plugins", {
 	},
 })
 
----- PLUGIN CONFIG ----
+---- PLUGIN CONFIG ----:
 -- require('config.high-str')
+
+-- vim.lsp.config('*', {
+--   root_markers = { '.git' },
+--   capabilties = {
+--     textDocument = {
+--       semanticTokens = {
+--         multilineTokenSupport = true,
+--       }
+--     }
+--   }
+-- })
+
+-- vim.lsp.enable({'clangd', 'rust-analyzer', 'ts_ls', 'svelte'})
+-- vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+vim.lsp.config('*', {
+  root_markers = { '.git' },
+  capabilities = capabilities
+  -- capabilties = {
+  --   textDocument = {
+  --     semanticTokens = {
+  --       multilineTokenSupport = true,
+  --     }
+  --   }
+  -- }
+})

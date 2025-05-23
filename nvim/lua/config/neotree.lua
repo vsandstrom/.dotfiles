@@ -1,3 +1,5 @@
+local map = require'utils'.map
+
 require("neo-tree").setup({
         close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
         popup_border_style = "rounded",
@@ -145,8 +147,8 @@ require("neo-tree").setup({
               --".null-ls_*",
             },
           },
-          follow_current_file = false, -- This will find and focus the file in the active buffer every
-                                       -- time the current file is changed while the tree is open.
+          follow_current_file = { enabled = false}, -- This will find and focus the file in the active buffer every
+                                                    -- time the current file is changed while the tree is open.
           group_empty_dirs = false, -- when true, empty folders will be grouped together
           hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
                                                   -- in whatever position is specified in window.position
@@ -170,7 +172,7 @@ require("neo-tree").setup({
           }
         },
         buffers = {
-          follow_current_file = true, -- This will find and focus the file in the active buffer every
+          follow_current_file = {enabled = true}, -- This will find and focus the file in the active buffer every
                                        -- time the current file is changed while the tree is open.
           group_empty_dirs = true, -- when true, empty folders will be grouped together
           show_unloaded = true,
@@ -197,3 +199,5 @@ require("neo-tree").setup({
           }
         }
       })
+
+map("n", "<C-o>", "<CMD>Neotree toggle show<CR>", {desc = "show neotree without focusing"})

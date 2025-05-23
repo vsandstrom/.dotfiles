@@ -15,9 +15,9 @@ require('mason-lspconfig').setup{
     "clangd",
     "bashls",
     "arduino_language_server",
-    "svelte"
+    "svelte",
     --- these are handled by their own plugins
-    -- "rust_analyzer"
+    "rust_analyzer"
     -- "gopls",
   },
   automatic_installation = true
